@@ -48,24 +48,24 @@ class Cadeira (models.Model):
     def __str__(self):
         return self.nome
 
-class Projeto (models.Model):
+class Projeto(models.Model):
     nome = models.CharField(max_length=255)
     descricao = models.TextField()
     github = models.URLField(max_length=200, null=True, blank=True)
     pessoa = models.ForeignKey(Pessoa, on_delete=models.CASCADE)
-    linguagem = models.ForeignKey('Linguagem', on_delete=models.CASCADE)
-    pessoal = models.BooleanField(default=False)
+    linguagens = models.ManyToManyField('Linguagem')
 
     def __str__(self):
         return self.nome
-    
-class Linguagem (models.Model):
+
+
+class Linguagem(models.Model):
     nome = models.CharField(max_length=255)
     descricao = models.TextField()
-    projetos = models.ManyToManyField(Projeto)
 
     def __str__(self):
         return self.nome
+
 
 class Aptidao (models.Model):
     nome = models.CharField(max_length=255)
