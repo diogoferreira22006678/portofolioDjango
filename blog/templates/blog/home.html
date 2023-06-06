@@ -6,7 +6,13 @@
                 <div class="col-md-6">
                     <div class="card mb-4">
                         <div class="card-body">
-                            <h2 class="card-title"><a href="">{{ post.title }}</a></h2>
+                            <h2 class="card-title">
+                                <a href="">{{ post.title }}</a>
+                                <div class="float-right">
+                                    <a href="{% url 'blog-editar' post.id %}" class="btn btn-primary">Editar</a>
+                                    <a href="{% url 'blog-deletar' post.id %}" class="btn btn-danger">Deletar</a>
+                                </div>
+                            </h2>
                             <p class="card-text description">{{ post.description }}</p>
                             <p class="card-text date">Published by: {{ post.author }} on {{ post.date_created }}</p>
                             <p class="card-text">{{ post.text|linebreaksbr }}</p>
@@ -14,6 +20,7 @@
                     </div>
                 </div>
             {% endfor %}
+            <a href="{% url  'blog-nova' %}" class="btn btn-success">Novo Post</a>
         </div>
     </div>
 {% endblock %}

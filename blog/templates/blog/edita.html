@@ -1,0 +1,10 @@
+{% extends 'blog/base.html' %}
+{% block main %}
+   <h3>Edita Post</h3>
+
+   <form action="{% url 'blog-editar' post_id %}" method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <a href="{% url 'blog-home' %}" class="btn btn-primary">Voltar</a>
+      <button type="submit">Salvar</button>
+{% endblock %}
