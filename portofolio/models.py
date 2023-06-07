@@ -24,7 +24,7 @@ class Universidade (models.Model):
 class Curso (models.Model):
     nome = models.CharField(max_length=255)
     ectsTotal = models.IntegerField()
-    ProfessorResponsavel = models.ForeignKey('Professor', on_delete=models.CASCADE)
+    professor = models.ForeignKey('Professor', on_delete=models.CASCADE)
     universidade = models.ForeignKey(Universidade, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -35,6 +35,7 @@ class Professor (models.Model):
     sobrenome = models.CharField(max_length=255)
     email = models.EmailField(max_length=255)
     universidade = models.ForeignKey(Universidade, on_delete=models.CASCADE)
+    linkedin = models.URLField(max_length=200, null=True, blank=True)
 
     def __str__(self):
         return self.nome + ' ' + self.sobrenome
@@ -54,6 +55,14 @@ class Projeto(models.Model):
     github = models.URLField(max_length=200, null=True, blank=True)
     pessoa = models.ForeignKey(Pessoa, on_delete=models.CASCADE)
     linguagens = models.ManyToManyField('Linguagem')
+    tipo = models.ForeignKey('TipoProjeto', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.nome
+    
+class TipoProjeto(models.Model):
+    nome = models.CharField(max_length=255)
+    descricao = models.TextField()
 
     def __str__(self):
         return self.nome
@@ -71,6 +80,15 @@ class Aptidao (models.Model):
     nome = models.CharField(max_length=255)
     descricao = models.TextField()
     pessoa = models.ForeignKey(Pessoa, on_delete=models.CASCADE)
+    tipo = models.ForeignKey('TipoAptidao', on_delete=models.CASCADE)
+
+
+    def __str__(self):
+        return self.nome
+
+class TipoAptidao (models.Model):
+    nome = models.CharField(max_length=255)
+    descricao = models.TextField()
 
     def __str__(self):
         return self.nome
@@ -78,9 +96,17 @@ class Aptidao (models.Model):
 class Tecnologia(models.Model):
     nome = models.CharField(max_length=255)
     ano_criacao = models.IntegerField()
-    criador = models.CharField(max_length=255)
+    pessoa = models.ForeignKey(Pessoa, on_delete=models.CASCADE)
     logotipo = models.ImageField(upload_to='logos/')
     link_oficial = models.URLField()
+    descricao = models.TextField()
+    tipo = models.ForeignKey('TipoTecnologia', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.nome
+    
+class TipoTecnologia(models.Model):
+    nome = models.CharField(max_length=255)
     descricao = models.TextField()
 
     def __str__(self):

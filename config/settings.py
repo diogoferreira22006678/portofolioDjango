@@ -37,9 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
     'blog',
     'portofolio',
+    'users',
 ]
+
+LOGIN_URL = 'users:login'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -130,3 +134,8 @@ MEDIA_ROOT = '/home/diomferreira/config/media'
 MEDIA_URL = '/media/'
 STATIC_ROOT = '/home/diomferreira/config/static'
 STATIC_URL = '/static/'
+
+GRAPH_MODELS = {
+    'all_applications': True,
+    'group_models': True,
+}
