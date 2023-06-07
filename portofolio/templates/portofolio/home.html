@@ -1,4 +1,10 @@
 {%extends 'portofolio/base.html'%}
 {%block content%}
-    <h1 class="text-center text-uppercase mb-0" style="color:black">Welcome to the Backend!</h1>
+    <div class="container-erd">
+            <h1 class="text-center text-uppercase mb-0" style="color:black">Welcome to the Backend {{user.username}}!</h1>
+        {% load static %}
+        <div>
+            <img src="{%static 'portofolio/media/erd.png'%}" alt="erd" class="img-erd">
+        </div>
+    </div>
 {%endblock%}

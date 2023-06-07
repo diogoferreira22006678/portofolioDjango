@@ -14,7 +14,17 @@ body{
  background-size: cover;
  background-position: center;
 }
-
+.img-erd{
+  width: 100%;
+  height: 100%;
+  margin: 15px;
+  border: 3px solid #b4b8b9;
+}
+.container-erd{
+  /* only takes 80% of the screen and its on the right side */
+  width: 80%;
+  margin: auto;
+}
 .side-bar{
  background: #1b1a1b;
  backdrop-filter: blur(15px);
@@ -30,11 +40,15 @@ body{
 .side-bar::-webkit-scrollbar {
   width: 0px;
 }
-
-
-
+.main{
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
 .side-bar.active{
  left: 0;
+ z-index: 10;
 }
 h1{
 
@@ -133,7 +147,7 @@ h1{
    line-height: 60px;
  }
 }
-img{
+.img-class{
   width: 100px;
   margin: 15px;
   border-radius: 50%;
