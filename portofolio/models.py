@@ -49,6 +49,15 @@ class Cadeira (models.Model):
     def __str__(self):
         return self.nome
 
+    
+class TipoProjeto(models.Model):
+    nome = models.CharField(max_length=255)
+    descricao = models.TextField()
+
+    def __str__(self):
+        return self.nome
+
+
 class Projeto(models.Model):
     nome = models.CharField(max_length=255)
     descricao = models.TextField()
@@ -59,14 +68,6 @@ class Projeto(models.Model):
 
     def __str__(self):
         return self.nome
-    
-class TipoProjeto(models.Model):
-    nome = models.CharField(max_length=255)
-    descricao = models.TextField()
-
-    def __str__(self):
-        return self.nome
-
 
 class Linguagem(models.Model):
     nome = models.CharField(max_length=255)
@@ -75,6 +76,13 @@ class Linguagem(models.Model):
     def __str__(self):
         return self.nome
 
+
+class TipoAptidao (models.Model):
+    nome = models.CharField(max_length=255)
+    descricao = models.TextField()
+
+    def __str__(self):
+        return self.nome
 
 class Aptidao (models.Model):
     nome = models.CharField(max_length=255)
@@ -86,7 +94,9 @@ class Aptidao (models.Model):
     def __str__(self):
         return self.nome
 
-class TipoAptidao (models.Model):
+
+
+class TipoTecnologia(models.Model):
     nome = models.CharField(max_length=255)
     descricao = models.TextField()
 
@@ -101,13 +111,6 @@ class Tecnologia(models.Model):
     link_oficial = models.URLField()
     descricao = models.TextField()
     tipo = models.ForeignKey('TipoTecnologia', on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.nome
-    
-class TipoTecnologia(models.Model):
-    nome = models.CharField(max_length=255)
-    descricao = models.TextField()
 
     def __str__(self):
         return self.nome
