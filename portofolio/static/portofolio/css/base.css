@@ -105,6 +105,13 @@ h1{
  margin: 20px;
  transition: 0.3s ease;
 }
+.limiter-form{
+  border: 2px solid #fff;
+  border-radius: 20px;
+  padding: 50px;
+  background: rgba(0, 0, 0, 0.05);
+
+}
 .register-custom{
   color: #fff;
   border: 1px solid #fff;

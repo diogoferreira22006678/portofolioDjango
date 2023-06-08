@@ -3,7 +3,7 @@
 {%block content%}
 <div class="container">
     <div class="col-md-10 offset-md-1 mt-5">
-        <div class="jumbotron">
+        <div class="limiter-form jumbotron">
             <h1 class="display-4">Registar Pessoas</h1>
             <p class="lead">Aqui irás conseguir adicionar pessoas no Backend.</p>
             <hr class="my-4">
@@ -22,11 +22,11 @@
                 </div>
                 {{ form.linkedin|as_crispy_field }}
                 {{ form.github|as_crispy_field }}
+                <button class="register-custom btn btn-sucess btn-lg" type="submit">
+                    <i class="fas fa-user-plus"></i>
+                        Registar
+                </button>
             </form>
-            <a class="register-custom btn btn-sucess btn-lg" href="#" role="button">
-            <i class="fas fa-user-plus"></i>
-                Registar
-            </a>
         </div>
     </div>
 </div>
