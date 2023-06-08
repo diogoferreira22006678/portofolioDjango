@@ -1,10 +1,28 @@
 {%extends 'portofolio/base.html'%}
 {%block content%}
     <div class="container-erd">
-            <h1 class="text-center text-uppercase mb-0" style="color:black">Welcome to the Backend {{user.username}}!</h1>
+        <h1 class="text-center mb-0 text-white">Welcome to the Backend {{user.username}}! <i class="fas fa-smile-beam"></i></h1>
         {% load static %}
         <div>
             <img src="{%static 'portofolio/media/erd.png'%}" alt="erd" class="img-erd">
         </div>
     </div>
+    <script>
+         // zoom in and zoom out of the erd image
+        var img = document.querySelector('.img-erd');
+        var container = document.querySelector('.container-erd');
+
+        img.addEventListener('mousemove', function(e){
+            var x = e.clientX - e.target.offsetLeft;
+            var y = e.clientY - e.target.offsetTop;
+
+            img.style.transformOrigin = `${x}px ${y}px`;
+            img.style.transform = "scale(2)";
+        });
+
+        img.addEventListener('mouseleave', function(e){
+            img.style.transformOrigin = "center center";
+            img.style.transform = "scale(1)";
+        });
+    </script>
 {%endblock%}
