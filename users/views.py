@@ -17,7 +17,7 @@ def login_view(request):
         if user is not None:
             login(request, user)
             #Redirect to localhost:8000/porfolio
-            return redirect('portofolio:portfolio-home')
+            return redirect('portofolio:home')
         else:
             return render(request, "users/login.html", {"message": "Invalid credentials."})
     

@@ -1,0 +1,51 @@
+{%extends 'portofolio/base.html' %}
+{%load crispy_forms_tags%}
+{%block content%}
+<div class="container">
+    <div class="col-md-10 offset-md-1 mt-5">
+        <div class="limiter-form jumbotron">
+            <a href="{%url 'portofolio:escolas_insert'%}" class="btn btn-primary btn-sm">
+                <i class="fas fa-user-plus"></i>
+                Adicionar
+            </a>
+            <h1 class="display-4">Lista de Escolas</h1>
+            <p class="lead">Aqui irás conseguir ver as escolas no Backend.</p>
+            <hr class="my-4">
+            <table class="table table-borderless">
+                <thead class="border-bottom font-weight-bold">
+                    <tr>
+                        <td>Nome</td>
+                        <td>Local</td>
+                        <td>Pessoa</td>
+                        <td>Início</td>
+                        <td>Fim</td>
+                        <td>Opções</td>
+                    </tr>
+                    <tbody>
+                        {%for escola in escolas_list%}
+                        <tr>
+                            <td>{{escola.nome}}</td>
+                            <td>{{escola.local}}</td>
+                            <td>{{ escola.pessoa }}</td>
+                            <td>{{ escola.inicio }}</td>
+                            <td>{{ escola.fim }}</td>
+                            <td>
+                                <a href="{%url 'portofolio:escola_update' escola.id%}" class="btn btn-warning btn-sm">
+                                    <i class="fas fa-user-edit"></i>
+                                </a>
+                                <form action="{%url 'portofolio:escola_delete' escola.id%}" method="post" class="d-inline">
+                                    {%csrf_token%}
+                                    <button type="submit" class="btn btn-danger btn-sm">
+                                        <i class="fas fa-user-times"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+{%endblock%}

@@ -14,7 +14,17 @@ class Pessoa (models.Model):
 class Universidade (models.Model):
     nome = models.CharField(max_length=255)
     local = models.CharField(max_length=255)
-    periodo = models.CharField(max_length=255)
+    pessoa = models.ForeignKey(Pessoa, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.nome
+    
+class Escola (models.Model):
+    nome = models.CharField(max_length=255)
+    local = models.CharField(max_length=255)
+    pessoa = models.ForeignKey(Pessoa, on_delete=models.CASCADE)
+    inicio = models.DateField()
+    fim = models.DateField()
 
     def __str__(self):
         return self.nome
@@ -24,6 +34,8 @@ class Curso (models.Model):
     ectsTotal = models.IntegerField()
     professor = models.ForeignKey('Professor', on_delete=models.CASCADE)
     universidade = models.ForeignKey(Universidade, on_delete=models.CASCADE)
+    inicio = models.DateField()
+    fim = models.DateField()
 
     def __str__(self):
         return self.nome
@@ -43,6 +55,8 @@ class Cadeira (models.Model):
     ects = models.IntegerField()
     curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
     professor = models.ForeignKey(Professor, on_delete=models.CASCADE)
+    semestre = models.IntegerField()
+    anoEscolar = models.IntegerField()
 
     def __str__(self):
         return self.nome
@@ -105,7 +119,6 @@ class Tecnologia(models.Model):
     nome = models.CharField(max_length=255)
     ano_criacao = models.IntegerField()
     pessoa = models.ForeignKey(Pessoa, on_delete=models.CASCADE)
-    logotipo = models.ImageField(upload_to='logos/')
     link_oficial = models.URLField()
     descricao = models.TextField()
     tipo = models.ForeignKey('TipoTecnologia', on_delete=models.CASCADE)
@@ -124,8 +137,8 @@ class Interesses (models.Model):
 class ExperienciaProfissional (models.Model):
     nome = models.CharField(max_length=255)
     descricao = models.TextField()
-    data_inicio = models.DateField()
-    data_fim = models.DateField()
+    inicio = models.DateField()
+    fim = models.DateField()
     pessoa = models.ForeignKey(Pessoa, on_delete=models.CASCADE)
 
     def __str__(self):

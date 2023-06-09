@@ -1,0 +1,46 @@
+{%extends 'portofolio/base.html' %}
+{%load crispy_forms_tags%}
+{%block content%}
+<div class="container">
+    <div class="col-md-10 offset-md-1 mt-5">
+        <div class="limiter-form jumbotron">
+            <div class="container-flex">
+                <a href="{%url 'portofolio:escolas_list'%}" class="btn btn-primary btn-sm">
+                    <i class="fas fa-arrow-left"></i>
+                        Voltar
+                </a>
+            </div>
+            <h1 class="display-4">Registar Escolas</h1>
+            <p class="lead">Aqui irás conseguir adicionar escolas no Backend.</p>
+            <hr class="my-4">
+            <form action="" method="post" autocomplete="off">
+                {% csrf_token %}
+                {{ form.nome|as_crispy_field }}
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form.local|as_crispy_field }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form.pessoa|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form.inicio|as_crispy_field }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form.fim|as_crispy_field }}
+                    </div>
+                </div>
+
+
+              
+                <button class="register-custom btn btn-sucess btn-lg" type="submit">
+                    <i class="fas fa-user-plus"></i>
+                        Registar
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{%endblock%}
