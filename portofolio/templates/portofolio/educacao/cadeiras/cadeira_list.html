@@ -4,32 +4,38 @@
 <div class="container">
     <div class="col-md-10 offset-md-1 mt-5">
         <div class="limiter-form jumbotron">
-            <a href="{%url 'portofolio:pessoas_insert'%}" class="btn btn-primary btn-sm">
+            <a href="{%url 'portofolio:cadeiras_insert'%}" class="btn btn-primary btn-sm">
                 <i class="fas fa-user-plus"></i>
                 Adicionar
             </a>
-            <h1 class="display-4">Lista de Pessoas</h1>
-            <p class="lead">Aqui irás conseguir ver as pessoas no Backend.</p>
+            <h1 class="display-4">Lista de Cadeira</h1>
+            <p class="lead">Aqui irás conseguir ver as cadeiras no Backend.</p>
             <hr class="my-4">
             <table class="table table-borderless">
                 <thead class="border-bottom font-weight-bold">
                     <tr>
                         <td>Nome</td>
-                        <td>Sobrenome</td>
-                        <td>Idade</td>
+                        <td>Ects</td>
+                        <td>Curso</td>
+                        <td>Semestre</td>
+                        <td>Professor</td>
+                        <td>Ano Escolar</td>
                         <td>Opções</td>
                     </tr>
                     <tbody>
-                        {%for pessoa in pessoas_list%}
+                        {%for cadeira in cadeiras_list%}
                         <tr>
-                            <td>{{pessoa.nome}}</td>
-                            <td>{{pessoa.sobrenome}}</td>
-                            <td>{{pessoa.idade}}</td>
+                            <td>{{cadeira.nome}}</td>
+                            <td>{{cadeira.ects}}</td>
+                            <td>{{ cadeira.curso }}</td>
+                            <td>{{ cadeira.semestre }}</td>
+                            <td>{{ cadeira.professor }}</td>
+                            <td>{{ cadeira.anoEscolar }}</td>
                             <td>
-                                <a href="{%url 'portofolio:pessoa_update' pessoa.id%}" class="btn btn-warning btn-sm">
+                                <a href="{%url 'portofolio:cadeira_update' cadeira.id%}" class="btn btn-warning btn-sm">
                                     <i class="fas fa-user-edit"></i>
                                 </a>
-                                <form action="{%url 'portofolio:pessoa_delete' pessoa.id%}" method="post" class="d-inline">
+                                <form action="{%url 'portofolio:cadeira_delete' cadeira.id%}" method="post" class="d-inline">
                                     {%csrf_token%}
                                     <button type="submit" class="btn btn-danger btn-sm">
                                         <i class="fas fa-user-times"></i>
