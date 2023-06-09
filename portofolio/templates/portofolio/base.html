@@ -27,7 +27,7 @@
       <div class="close-btn">
         <i class="fas fa-times"></i>
       </div>
-      <a href="/portofolio" class="logo">
+      <a href="{% url 'portofolio:home' %}" class="logo">
         <img src="https://www.w3schools.com/howto/img_avatar.png" alt="" class="img-class">
         <h1 class="header-sidebar"><i class="fas fa-code"></i>Backend</h1>
       </a>
@@ -36,7 +36,7 @@
       <div class="item">
         <a class="sub-btn"><i class="fas fa-table"></i>Pessoal<i class="fas fa-angle-right dropdown"></i></a>
         <div class="sub-menu">
-          <a href="/portofolio/pessoas" class="sub-item">Pessoas</a>
+          <a href="{%url 'portofolio:pessoas_list'%}" class="sub-item">Pessoas</a>
           <a href="#" class="sub-item">Professores</a>
         </div>
       </div>

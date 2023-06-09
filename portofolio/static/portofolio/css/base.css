@@ -15,6 +15,28 @@ body{
  background-size: cover;
  background-position: center;
 }
+
+.table{
+  --bs-table-color: #fff;
+  --bs-table-bg: transparent; 
+}
+
+.btn-warning, .btn-danger, .btn-success, .btn-primary{
+  --bs-btn-color: #fff;
+  --bs-btn-bg: transparent;
+  --bs-btn-border-color: transparent;
+  border-radius: 5px;
+}
+.btn-warning:hover, .btn-danger:hover, .btn-success:hover, .btn-primary:hover{
+  --bs-btn-color: #33363a;
+  --bs-btn-bg: #fff;
+  --bs-btn-border-color: #fff;
+  color: #33363a;
+  border-color: transparent;
+  background: #fff;
+  transition: 0.3s ease;
+}
+
 .img-erd{
   width: 100%;
   height: 100%;

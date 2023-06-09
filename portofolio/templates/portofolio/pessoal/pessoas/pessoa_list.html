@@ -1,11 +1,47 @@
-{%extends 'portofolio/base.html'%}
+{%extends 'portofolio/base.html' %}
+{%load crispy_forms_tags%}
 {%block content%}
-    <div class="container-erd">
-        <h1 class="text-center text-uppercase mb-0" style="color:black"> list!</h1>
-        {% load static %}
-        <div>
-            <img src="{%static 'portofolio/media/erd.png'%}" alt="erd" class="img-erd">
+<div class="container">
+    <div class="col-md-10 offset-md-1 mt-5">
+        <div class="limiter-form jumbotron">
+            <a href="{%url 'portofolio:pessoas_insert'%}" class="btn btn-primary btn-sm">
+                <i class="fas fa-user-plus"></i>
+                Adicionar
+            </a>
+            <h1 class="display-4">Lista de Pessoas</h1>
+            <p class="lead">Aqui irás conseguir ver as pessoas no Backend.</p>
+            <hr class="my-4">
+            <table class="table table-borderless">
+                <thead class="border-bottom font-weight-bold">
+                    <tr>
+                        <td>Nome</td>
+                        <td>Sobrenome</td>
+                        <td>Idade</td>
+                        <td>Opções</td>
+                    </tr>
+                    <tbody>
+                        {%for pessoa in pessoas_list%}
+                        <tr>
+                            <td>{{pessoa.nome}}</td>
+                            <td>{{pessoa.sobrenome}}</td>
+                            <td>{{pessoa.idade}}</td>
+                            <td>
+                                <a href="{%url 'portofolio:pessoa_update' pessoa.id%}" class="btn btn-warning btn-sm">
+                                    <i class="fas fa-user-edit"></i>
+                                </a>
+                                <form action="{%url 'portofolio:pessoa_delete' pessoa.id%}" method="post" class="d-inline">
+                                    {%csrf_token%}
+                                    <button type="submit" class="btn btn-danger btn-sm">
+                                        <i class="fas fa-user-times"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </thead>
+            </table>
         </div>
     </div>
+</div>
 {%endblock%}
-```
