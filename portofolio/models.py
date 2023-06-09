@@ -43,7 +43,6 @@ class Curso (models.Model):
 class Professor (models.Model):
     nome = models.CharField(max_length=255)
     sobrenome = models.CharField(max_length=255)
-    email = models.EmailField(max_length=255)
     universidade = models.ForeignKey(Universidade, on_delete=models.CASCADE)
     linkedin = models.URLField(max_length=200, null=True, blank=True)
 

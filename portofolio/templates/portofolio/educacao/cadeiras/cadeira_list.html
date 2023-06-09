@@ -4,32 +4,32 @@
 <div class="container">
     <div class="col-md-10 offset-md-1 mt-5">
         <div class="limiter-form jumbotron">
-            <a href="{%url 'portofolio:professores_insert'%}" class="btn btn-primary btn-sm">
+            <a href="{%url 'portofolio:pessoas_insert'%}" class="btn btn-primary btn-sm">
                 <i class="fas fa-user-plus"></i>
                 Adicionar
             </a>
-            <h1 class="display-4">Lista de Professores</h1>
-            <p class="lead">Aqui irás conseguir ver os professores no Backend.</p>
+            <h1 class="display-4">Lista de Pessoas</h1>
+            <p class="lead">Aqui irás conseguir ver as pessoas no Backend.</p>
             <hr class="my-4">
             <table class="table table-borderless">
                 <thead class="border-bottom font-weight-bold">
                     <tr>
                         <td>Nome</td>
                         <td>Sobrenome</td>
-                        <td>Universidade</td>
+                        <td>Idade</td>
                         <td>Opções</td>
                     </tr>
                     <tbody>
-                        {%for professor in professores_list%}
+                        {%for pessoa in pessoas_list%}
                         <tr>
-                            <td>{{professor.nome}}</td>
-                            <td>{{professor.sobrenome}}</td>
-                            <td>{{ professor.universidade }}</td>
+                            <td>{{pessoa.nome}}</td>
+                            <td>{{pessoa.sobrenome}}</td>
+                            <td>{{pessoa.idade}}</td>
                             <td>
-                                <a href="{%url 'portofolio:professor_update' professor.id%}" class="btn btn-warning btn-sm">
+                                <a href="{%url 'portofolio:pessoa_update' pessoa.id%}" class="btn btn-warning btn-sm">
                                     <i class="fas fa-user-edit"></i>
                                 </a>
-                                <form action="{%url 'portofolio:professor_delete' professor.id%}" method="post" class="d-inline">
+                                <form action="{%url 'portofolio:pessoa_delete' pessoa.id%}" method="post" class="d-inline">
                                     {%csrf_token%}
                                     <button type="submit" class="btn btn-danger btn-sm">
                                         <i class="fas fa-user-times"></i>
