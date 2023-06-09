@@ -8,6 +8,14 @@ from .forms import EscolaForm
 from .forms import UniversidadeForm
 from .forms import CursoForm
 from .forms import CadeiraForm
+from .forms import ProjetoForm
+from .forms import LinguagemForm
+from .forms import ExperienciaProfissionalForm
+from .forms import AptidaoForm
+from .forms import TecnologiaForm
+from .forms import TipoTecnologiaForm
+from .forms import TipoAptidaoForm
+from .forms import TipoProjetoForm
 
 from .models import Pessoa
 from .models import Professor
@@ -15,6 +23,14 @@ from .models import Escola
 from .models import Universidade
 from .models import Curso
 from .models import Cadeira
+from .models import Projeto
+from .models import Linguagem
+from .models import ExperienciaProfissional
+from .models import Aptidao
+from .models import Tecnologia
+from .models import TipoTecnologia
+from .models import TipoAptidao
+from .models import TipoProjeto
 
 # Create your views here.
 @login_required
@@ -212,4 +228,232 @@ def cadeiras_delete(request, id):
     cadeira = Cadeira.objects.get(pk=id)
     cadeira.delete()
     return redirect('/portofolio/cadeiras/list/')
+
+@login_required
+def  projetos_list(request):
+
+    context = {'projectos_list': Projeto.objects.all()}
+
+    return render(request, 'portofolio/educacao/projectos/projecto_list.html', context)
+
+@login_required
+def projetos_form(request, id=0):
+    if request.method == "GET":
+        if id == 0:
+            form = ProjetoForm()
+        else:
+            projecto = ProjetoForm.objects.get(pk=id)
+            form = ProjetoForm(instance=projecto)
+        return render(request, 'portofolio/educacao/projectos/projecto_form.html', {'form': form})
+    else:
+        if id == 0:
+            form = ProjetoForm(request.POST)
+        else:
+            projecto = Projeto.objects.get(pk=id)
+            form = ProjetoForm(request.POST, instance=projecto)
+        if form.is_valid():
+            form.save()
+        return redirect('/portofolio/projectos/list/')
+    
+@login_required
+def projetos_delete(request, id):
+    projecto = Projeto.objects.get(pk=id)
+    projecto.delete()
+    return redirect('/portofolio/projectos/list/')
+
+@login_required
+def  linguagens_list(request):
+    
+        context = {'linguagem_list': Linguagem.objects.all()}
+    
+        return render(request, 'portofolio/educacao/linguagens/linguagem_list.html', context)
+
+@login_required
+def linguagens_form(request, id=0):
+    if request.method == "GET":
+        if id == 0:
+            form = LinguagemForm()
+        else:
+            linguagem = Linguagem.objects.get(pk=id)
+            form = LinguagemForm(instance=linguagem)
+        return render(request, 'portofolio/educacao/linguagens/linguagem_form.html', {'form': form})
+    else:
+        if id == 0:
+            form = LinguagemForm(request.POST)
+        else:
+            linguagem = Linguagem.objects.get(pk=id)
+            form = LinguagemForm(request.POST, instance=linguagem)
+        if form.is_valid():
+            form.save()
+        return redirect('/portofolio/linguagens/list/')
+    
+@login_required
+def linguagens_delete(request, id):
+    linguagem = Linguagem.objects.get(pk=id)
+    linguagem.delete()
+    return redirect('/portofolio/linguagens/list/')
+
+@login_required
+def experiencias_profissionais_form(request, id=0):
+    if request.method == "GET":
+        if id == 0:
+            form = ExperienciaProfissionalForm()
+        else:
+            experiencia_profissional = ExperienciaProfissional.objects.get(pk=id)
+            form = ExperienciaProfissionalForm(instance=experiencia_profissional)
+        return render(request, 'portofolio/experiencias_profissionais/experiencia_profissional_form.html', {'form': form})
+    else:
+        if id == 0:
+            form = ExperienciaProfissionalForm(request.POST)
+        else:
+            experiencia_profissional = ExperienciaProfissional.objects.get(pk=id)
+            form = ExperienciaProfissionalForm(request.POST, instance=experiencia_profissional)
+        if form.is_valid():
+            form.save()
+        return redirect('/portofolio/experiencias_profissionais/list/')
+    
+@login_required
+def experiencias_profissionais_delete(request, id):
+    experiencia_profissional = ExperienciaProfissional.objects.get(pk=id)
+    experiencia_profissional.delete()
+    return redirect('/portofolio/experiencias_profissionais/list/')
+
+@login_required
+def experiencias_profissionais_list(request):
+    
+    context = {'experiencias_profissionais_list': ExperienciaProfissional.objects.all()}
+
+    return render(request, 'portofolio/experiencias_profissionais/experiencia_profissional_list.html', context)
+
+@login_required
+def aptidoes_form(request, id=0):
+    if request.method == "GET":
+        if id == 0:
+            form = AptidaoForm()
+        else:
+            aptidao = Aptidao.objects.get(pk=id)
+            form = AptidaoForm(instance=aptidao)
+        return render(request, 'portofolio/aptidoes/aptidao_form.html', {'form': form})
+    else:
+        if id == 0:
+            form = AptidaoForm(request.POST)
+        else:
+            aptidao = Aptidao.objects.get(pk=id)
+            form = AptidaoForm(request.POST, instance=aptidao)
+        if form.is_valid():
+            form.save()
+        return redirect('/portofolio/aptidoes/list/')
+    
+@login_required
+def aptidoes_delete(request, id):
+    aptidao = Aptidao.objects.get(pk=id)
+    aptidao.delete()
+    return redirect('/portofolio/aptidoes/list/')
+
+@login_required
+def aptidoes_list(request):
+        
+    context = {'aptidoes_list': Aptidao.objects.all()}
+
+    return render(request, 'portofolio/aptidoes/aptidao_list.html', context)
+
+@login_required
+def tecnologias_form(request):
+    if request.method == "GET":
+        form = TecnologiaForm()
+        return render(request, 'portofolio/tecnologias/tecnologia_form.html', {'form': form})
+    else:
+        form = TecnologiaForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('/portofolio/tecnologias/list/')
+    
+@login_required
+def tecnologias_delete(request, id):
+    tecnologia = Tecnologia.objects.get(pk=id)
+    tecnologia.delete()
+    return redirect('/portofolio/tecnologias/list/')
+
+@login_required
+def tecnologias_list(request):
+
+    context = {'tecnologias_list': Tecnologia.objects.all()}
+
+    return render(request, 'portofolio/tecnologias/tecnologia_list.html', context)
+
+@login_required
+def tipo_tecnologias_form(request):
+    if request.method == "GET":
+        form = TipoTecnologiaForm()
+        return render(request, 'portofolio/tipo_tecnologias/tipo_tecnologia_form.html', {'form': form})
+    else:
+        form = TipoTecnologiaForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('/portofolio/tipo_tecnologias/list/')
+    
+@login_required
+def tipo_tecnologias_delete(request, id):
+    tipo_tecnologia = TipoTecnologia.objects.get(pk=id)
+    tipo_tecnologia.delete()
+    return redirect('/portofolio/tipo_tecnologias/list/')
+
+@login_required
+def tipo_tecnologias_list(request):
+    
+        context = {'tipo_tecnologias_list': TipoTecnologia.objects.all()}
+    
+        return render(request, 'portofolio/tipo_tecnologias/tipo_tecnologia_list.html', context)
+
+@login_required
+def tipo_aptidoes_form(request):
+    if request.method == "GET":
+        form = TipoAptidaoForm()
+        return render(request, 'portofolio/tipo_aptidoes/tipo_aptidao_form.html', {'form': form})
+    else:
+        form = TipoAptidaoForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('/portofolio/tipo_aptidoes/list/')
+    
+@login_required
+def tipo_aptidoes_delete(request, id):
+    tipo_aptidao = TipoAptidao.objects.get(pk=id)
+    tipo_aptidao.delete()
+    return redirect('/portofolio/tipo_aptidoes/list/')
+
+@login_required
+def tipo_aptidoes_list(request):
+        
+            context = {'tipo_aptidoes_list': TipoAptidao.objects.all()}
+        
+            return render(request, 'portofolio/tipo_aptidoes/tipo_aptidao_list.html', context)
+
+@login_required
+def tipo_projetos_form(request):
+    if request.method == "GET":
+        form = TipoProjetoForm()
+        return render(request, 'portofolio/tipo_projetos/tipo_projeto_form.html', {'form': form})
+    else:
+        form = TipoProjetoForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('/portofolio/tipo_projetos/list/')
+    
+@login_required
+def tipo_projetos_delete(request, id):
+    tipo_projeto = TipoProjeto.objects.get(pk=id)
+    tipo_projeto.delete()
+    return redirect('/portofolio/tipo_projetos/list/')
+
+@login_required
+def tipo_projetos_list(request):
+
+    context = {'tipo_projetos_list': TipoProjeto.objects.all()}
+
+    return render(request, 'portofolio/tipo_projetos/tipo_projeto_list.html', context)
+
+
+
+
 

@@ -125,14 +125,6 @@ class Tecnologia(models.Model):
     def __str__(self):
         return self.nome
     
-class Interesses (models.Model):
-    nome = models.CharField(max_length=255)
-    descricao = models.TextField()
-    pessoa = models.ForeignKey(Pessoa, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.nome
-    
 class ExperienciaProfissional (models.Model):
     nome = models.CharField(max_length=255)
     descricao = models.TextField()

@@ -5,6 +5,7 @@ from . import views
 app_name = 'portofolio'
 
 urlpatterns = [
+
     path('', views.home, name='home'),
     path('pessoas/', views.pessoas_form, name='pessoas_insert'), # get and post req. for insert operation
     path('pessoas/list/', views.pessoas_list, name='pessoas_list'), # get req. to retrieve and display all records
@@ -35,4 +36,45 @@ urlpatterns = [
     path('cadeiras/list/', views.cadeiras_list, name='cadeiras_list'), # get req. to retrieve and display all records
     path('cadeiras/update/<int:id>', views.cadeiras_form, name='cadeira_update'), # get and post req. for update operation
     path('cadeiras/delete/<int:id>', views.cadeiras_delete, name='cadeira_delete'), # get req. to delete operation
+
+    path('projetos/', views.projetos_form, name='projetos_insert'), # get and post req. for insert operation
+    path('projetos/list/', views.projetos_list, name='projetos_list'), # get req. to retrieve and display all records
+    path('projetos/update/<int:id>', views.projetos_form, name='projeto_update'), # get and post req. for update operation
+    path('projetos/delete/<int:id>', views.projetos_delete, name='projeto_delete'), # get req. to delete operation
+
+    path('linguagens/', views.linguagens_form, name='linguagens_insert'), # get and post req. for insert operation
+    path('linguagens/list/', views.linguagens_list, name='linguagens_list'), # get req. to retrieve and display all records
+    path('linguagens/update/<int:id>', views.linguagens_form, name='linguagem_update'), # get and post req. for update operation
+    path('linguagens/delete/<int:id>', views.linguagens_delete, name='linguagem_delete'), # get req. to delete operation
+
+    path('experiencias-profissionais/', views.experiencias_profissionais_form, name='experiencias_profissionais_insert'), # get and post req. for insert operation
+    path('experiencias-profissionais/list/', views.experiencias_profissionais_list, name='experiencias_profissionais_list'), # get req. to retrieve and display all records
+    path('experiencias-profissionais/update/<int:id>', views.experiencias_profissionais_form, name='experiencia_profissional_update'), # get and post req. for update operation
+    path('experiencias-profissionais/delete/<int:id>', views.experiencias_profissionais_delete, name='experiencia_profissional_delete'), # get req. to delete operation
+
+    path('aptidoes/', views.aptidoes_form, name='aptidoes_insert'), # get and post req. for insert operation
+    path('aptidoes/list/', views.aptidoes_list, name='aptidoes_list'), # get req. to retrieve and display all records
+    path('aptidoes/update/<int:id>', views.aptidoes_form, name='aptidao_update'), # get and post req. for update operation
+    path('aptidoes/delete/<int:id>', views.aptidoes_delete, name='aptidao_delete'), # get req. to delete operation
+
+    path('tecnologias/', views.tecnologias_form, name='tecnologias_insert'), # get and post req. for insert operation
+    path('tecnologias/list/', views.tecnologias_list, name='tecnologias_list'), # get req. to retrieve and display all records
+    path('tecnologias/update/<int:id>', views.tecnologias_form, name='tecnologia_update'), # get and post req. for update operation
+    path('tecnologias/delete/<int:id>', views.tecnologias_delete, name='tecnologia_delete'), # get req. to delete operation
+
+    path('tipo-tecnologias/', views.tipo_tecnologias_form, name='tipo_tecnologias_insert'), # get and post req. for insert operation
+    path('tipo-tecnologias/list/', views.tipo_tecnologias_list, name='tipo_tecnologias_list'), # get req. to retrieve and display all records
+    path('tipo-tecnologias/update/<int:id>', views.tipo_tecnologias_form, name='tipo_tecnologia_update'), # get and post req. for update operation
+    path('tipo-tecnologias/delete/<int:id>', views.tipo_tecnologias_delete, name='tipo_tecnologia_delete'), # get req. to delete operation
+
+    path('tipo-aptidoes/', views.tipo_aptidoes_form, name='tipo_aptidoes_insert'), # get and post req. for insert operation
+    path('tipo-aptidoes/list/', views.tipo_aptidoes_list, name='tipo_aptidoes_list'), # get req. to retrieve and display all records
+    path('tipo-aptidoes/update/<int:id>', views.tipo_aptidoes_form, name='tipo_aptidao_update'), # get and post req. for update operation
+    path('tipo-aptidoes/delete/<int:id>', views.tipo_aptidoes_delete, name='tipo_aptidao_delete'), # get req. to delete operation
+
+    path('tipo-projetos/', views.tipo_projetos_form, name='tipo_projetos_insert'), # get and post req. for insert operation
+    path('tipo-projetos/list/', views.tipo_projetos_list, name='tipo_projetos_list'), # get req. to retrieve and display all records
+    path('tipo-projetos/update/<int:id>', views.tipo_projetos_form, name='tipo_projeto_update'), # get and post req. for update operation
+    path('tipo-projetos/delete/<int:id>', views.tipo_projetos_delete, name='tipo_projeto_delete'), # get req. to delete operation
+
 ]
