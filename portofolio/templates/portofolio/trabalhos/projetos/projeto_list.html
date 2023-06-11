@@ -4,38 +4,38 @@
 <div class="container">
     <div class="col-md-10 offset-md-1 mt-5">
         <div class="limiter-form jumbotron">
-            <a href="{%url 'portofolio:cadeiras_insert'%}" class="btn btn-primary btn-sm">
+            <a href="{%url 'portofolio:projetos_insert'%}" class="btn btn-primary btn-sm">
                 <i class="fas fa-user-plus"></i>
                 Adicionar
             </a>
-            <h1 class="display-4">Lista de Cadeira</h1>
-            <p class="lead">Aqui irás conseguir ver as cadeiras no Backend.</p>
+            <h1 class="display-4">Lista de Projetos</h1>
+            <p class="lead">Aqui irás conseguir ver os projetos no Backend.</p>
             <hr class="my-4">
             <table class="table table-borderless">
                 <thead class="border-bottom font-weight-bold">
                     <tr>
                         <td>Nome</td>
-                        <td>Ects</td>
-                        <td>Curso</td>
-                        <td>Semestre</td>
-                        <td>Professor</td>
-                        <td>Ano Escolar</td>
+                        <td>pessoa</td>
+                        <td>Linguagens</td>
+                        <td>Tipo</td>
+                        <td>Cadeira</td>
                         <td>Opções</td>
                     </tr>
                     <tbody>
-                        {%for cadeira in cadeiras_list%}
+                        {%for projeto in projetos_list%}
                         <tr>
-                            <td>{{cadeira.nome}}</td>
-                            <td>{{cadeira.ects}}</td>
-                            <td>{{ cadeira.curso }}</td>
-                            <td>{{ cadeira.semestre }}</td>
-                            <td>{{ cadeira.professor }}</td>
-                            <td>{{ cadeira.anoEscolar }}</td>
+                            <td>{{projeto.nome}}</td>
+                            <td>{{projeto.pessoa}}</td>
+                            <td>{{projeto.linguagens}}</td>
+                            <td>{{projeto.tipo}}</td>
+                            {%if tipo == 'Escolar'%}
+                            <td>{{projeto.cadeira}}</td>
+                            {%endif%}
                             <td>
-                                <a href="{%url 'portofolio:cadeira_update' cadeira.id%}" class="btn btn-warning btn-sm">
+                                <a href="{%url 'portofolio:projeto_update' projeto.id%}" class="btn btn-warning btn-sm">
                                     <i class="fas fa-user-edit"></i>
                                 </a>
-                                <form action="{%url 'portofolio:cadeira_delete' cadeira.id%}" method="post" class="d-inline">
+                                <form action="{%url 'portofolio:projeto_delete' projeto.id%}" method="post" class="d-inline">
                                     {%csrf_token%}
                                     <button type="submit" class="btn btn-danger btn-sm">
                                         <i class="fas fa-user-times"></i>

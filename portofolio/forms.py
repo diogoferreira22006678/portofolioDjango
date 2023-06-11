@@ -95,6 +95,7 @@ class CadeiraForm(forms.ModelForm):
         self.fields['professor'].empty_label = "Escolhe o Professor"
 
 class ProjetoForm(forms.ModelForm):
+    tecnologias = forms.ModelMultipleChoiceField(queryset=Tecnologia.objects.all(), widget=forms.SelectMultiple)
 
     class Meta:
         model = Projeto
@@ -102,24 +103,22 @@ class ProjetoForm(forms.ModelForm):
         widgets = {
             'inicio': forms.DateInput(attrs={'type': 'date'}),
             'fim': forms.DateInput(attrs={'type': 'date'}),
+            'tipo': forms.Select(attrs={'class': 'form-control'}),
         }
 
     # Select field tem de ser Escolhe a Pessoa
     def __init__(self, *args, **kwargs):
         super(ProjetoForm, self).__init__(*args, **kwargs)
         self.fields['pessoa'].empty_label = "Escolhe a Pessoa"
-        self.fields['tipo_projeto'].empty_label = "Escolhe o Tipo de Projeto"
+        self.fields['tipo'].empty_label = "Escolhe o Tipo"
+        self.fields['tecnologias'].empty_label = "Escolhe as Tecnologias"
+        self.fields['cadeira'].empty_label = "Escolhe a Cadeira"
 
 class LinguagemForm(forms.ModelForm):
                     
     class Meta:
         model = Linguagem
         fields ='__all__'
-
-    # Select field tem de ser Escolhe a Pessoa
-    def __init__(self, *args, **kwargs):
-        super(LinguagemForm, self).__init__(*args, **kwargs)
-        self.fields['projeto'].empty_label = "Escolhe o Projeto"
         
 class ExperienciaProfissionalForm(forms.ModelForm):
 
@@ -135,7 +134,6 @@ class ExperienciaProfissionalForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(ExperienciaProfissionalForm, self).__init__(*args, **kwargs)
         self.fields['pessoa'].empty_label = "Escolhe a Pessoa"
-        self.fields['tipo_projeto'].empty_label = "Escolhe o Tipo de Projeto"   
                             
 class AptidaoForm(forms.ModelForm):
                             
@@ -147,7 +145,7 @@ class AptidaoForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(AptidaoForm, self).__init__(*args, **kwargs)
         self.fields['pessoa'].empty_label = "Escolhe a Pessoa"
-        self.fields['tipo_aptidao'].empty_label = "Escolhe o Tipo de Aptidão"
+        self.fields['tipo'].empty_label = "Escolhe o Tipo"
 
 class TecnologiaForm(forms.ModelForm):
         
@@ -159,7 +157,7 @@ class TecnologiaForm(forms.ModelForm):
         def __init__(self, *args, **kwargs):
             super(TecnologiaForm, self).__init__(*args, **kwargs)
             self.fields['pessoa'].empty_label = "Escolhe a Pessoa"
-            self.fields['tipo_tecnologia'].empty_label = "Escolhe o Tipo de Tecnologia"
+            self.fields['tipo'].empty_label = "Escolhe o Tipo de Tecnologia"
 
 class TipoTecnologiaForm(forms.ModelForm):
         

@@ -5,13 +5,13 @@
     <div class="col-md-10 offset-md-1 mt-5">
         <div class="limiter-form jumbotron">
             <div class="container-flex">
-                <a href="{%url 'portofolio:cadeiras_list'%}" class="btn btn-primary btn-sm">
+                <a href="{%url 'portofolio:aptidoes_list'%}" class="btn btn-primary btn-sm">
                     <i class="fas fa-arrow-left"></i>
                         Voltar
                 </a>
             </div>
-            <h1 class="display-4">Registar Cadeiras</h1>
-            <p class="lead">Aqui irás conseguir adicionar cadeiras no Backend.</p>
+            <h1 class="display-4">Registar Aptidões</h1>
+            <p class="lead">Aqui irás conseguir adicionar aptidões no Backend.</p>
             <hr class="my-4">
             <form action="" method="post" autocomplete="off">
                 {% csrf_token %}
@@ -19,22 +19,16 @@
                     <div class="col-md-6">
                         {{form.nome|as_crispy_field}}
                     </div>
-                    <div class="col-md-2">
-                        {{form.anoEscolar|as_crispy_field}}
+                    <div class="col-md-6">
+                        {{form.tipo|as_crispy_field}}
                     </div>
-                    <div class="col-md-2">
-                        {{form.semestre|as_crispy_field}}
-                    </div>
-                    <div class="col-md-2">
-                        {{form.ects|as_crispy_field}}
+                    <div class="col-md-4">
+                        {{form.pessoa|as_crispy_field}}
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
-                        {{form.curso|as_crispy_field}}
-                    </div>
-                    <div class="col-md-6">
-                        {{form.professor|as_crispy_field}}
+                    <div class="col-md-12">
+                        {{form.descricao|as_crispy_field}}
                     </div>
                 </div>
                 <button class="register-custom btn btn-sucess btn-lg" type="submit">

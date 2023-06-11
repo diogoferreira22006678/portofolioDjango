@@ -76,6 +76,8 @@ class Projeto(models.Model):
     pessoa = models.ForeignKey(Pessoa, on_delete=models.CASCADE)
     linguagens = models.ManyToManyField('Linguagem')
     tipo = models.ForeignKey('TipoProjeto', on_delete=models.CASCADE)
+    tecnologias = models.ManyToManyField('Tecnologia')
+    cadeira = models.ForeignKey('Cadeira', on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return self.nome
