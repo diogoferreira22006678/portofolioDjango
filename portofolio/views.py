@@ -61,13 +61,13 @@ def pessoas_form(request, id=0):
             form = PessoaForm(request.POST, instance=pessoa)
         if form.is_valid():
             form.save()
-        return redirect('/portofolio/pessoas/list/')
+        return redirect('/backend/pessoas/list/')
 
 @login_required
 def pessoas_delete(request, id):
     pessoa = Pessoa.objects.get(pk=id)
     pessoa.delete()
-    return redirect('/portofolio/pessoas/list/')
+    return redirect('/backend/pessoas/list/')
 
 @login_required
 def professores_list(request):
@@ -93,13 +93,13 @@ def professores_form(request, id=0):
             form = ProfessorForm(request.POST, instance=professor)
         if form.is_valid():
             form.save()
-        return redirect('/portofolio/professores/list/')
+        return redirect('/backend/professores/list/')
     
 @login_required
 def professores_delete(request, id):
     professor = Professor.objects.get(pk=id)
     professor.delete()
-    return redirect('/portofolio/professores/list/')
+    return redirect('/backend/professores/list/')
 
 @login_required
 def escolas_list(request):
@@ -125,13 +125,13 @@ def escolas_form(request, id=0):
             form = EscolaForm(request.POST, instance=escola)
         if form.is_valid():
             form.save()
-        return redirect('/portofolio/escolas/list/')
+        return redirect('/backend/escolas/list/')
     
 @login_required
 def escolas_delete(request, id):
     escola = Escola.objects.get(pk=id)
     escola.delete()
-    return redirect('/portofolio/escolas/list/')
+    return redirect('/backend/escolas/list/')
 
 @login_required
 def universidades_list(request):
@@ -157,13 +157,13 @@ def universidades_form(request, id=0):
             form = UniversidadeForm(request.POST, instance=universidade)
         if form.is_valid():
             form.save()
-        return redirect('/portofolio/universidades/list/')
+        return redirect('/backend/universidades/list/')
 
 @login_required
 def universidades_delete(request, id):
     universidade = Universidade.objects.get(pk=id)
     universidade.delete()
-    return redirect('/portofolio/universidades/list/')
+    return redirect('/backend/universidades/list/')
 
 @login_required
 def cursos_list(request):
@@ -189,13 +189,13 @@ def cursos_form(request, id=0):
             form = CursoForm(request.POST, instance=curso)
         if form.is_valid():
             form.save()
-        return redirect('/portofolio/cursos/list/')
+        return redirect('/backend/cursos/list/')
     
 @login_required
 def cursos_delete(request, id):
     curso = Curso.objects.get(pk=id)
     curso.delete()
-    return redirect('/portofolio/cursos/list/')
+    return redirect('/backend/cursos/list/')
 
 @login_required
 def cadeiras_list(request):
@@ -221,13 +221,13 @@ def cadeiras_form(request, id=0):
             form = CadeiraForm(request.POST, instance=cadeira)
         if form.is_valid():
             form.save()
-        return redirect('/portofolio/cadeiras/list/')
+        return redirect('/backend/cadeiras/list/')
     
 @login_required
 def cadeiras_delete(request, id):
     cadeira = Cadeira.objects.get(pk=id)
     cadeira.delete()
-    return redirect('/portofolio/cadeiras/list/')
+    return redirect('/backend/cadeiras/list/')
 
 @login_required
 def  projetos_list(request):
@@ -253,13 +253,13 @@ def projetos_form(request, id=0):
             form = ProjetoForm(request.POST, instance=projecto)
         if form.is_valid():
             form.save()
-        return redirect('/portofolio/projectos/list/')
+        return redirect('/backend/projectos/list/')
     
 @login_required
 def projetos_delete(request, id):
     projecto = Projeto.objects.get(pk=id)
     projecto.delete()
-    return redirect('/portofolio/projectos/list/')
+    return redirect('/backend/projectos/list/')
 
 @login_required
 def  linguagens_list(request):
@@ -286,13 +286,13 @@ def linguagens_form(request, id=0):
             form = LinguagemForm(request.POST, instance=linguagem)
         if form.is_valid():
             form.save()
-        return redirect('/portofolio/linguagens/list/')
+        return redirect('/backend/linguagens/list/')
     
 @login_required
 def linguagens_delete(request, id):
     linguagem = Linguagem.objects.get(pk=id)
     linguagem.delete()
-    return redirect('/portofolio/linguagens/list/')
+    return redirect('/backend/linguagens/list/')
 
 @login_required
 def experiencias_profissionais_form(request, id=0):
@@ -311,13 +311,13 @@ def experiencias_profissionais_form(request, id=0):
             form = ExperienciaProfissionalForm(request.POST, instance=experiencia_profissional)
         if form.is_valid():
             form.save()
-        return redirect('/portofolio/experiencias-profissionais/list/')
+        return redirect('/backend/experiencias-profissionais/list/')
     
 @login_required
 def experiencias_profissionais_delete(request, id):
     experiencia_profissional = ExperienciaProfissional.objects.get(pk=id)
     experiencia_profissional.delete()
-    return redirect('/portofolio/experiencias-profissionais/list/')
+    return redirect('/backend/experiencias-profissionais/list/')
 
 @login_required
 def experiencias_profissionais_list(request):
@@ -343,13 +343,13 @@ def aptidoes_form(request, id=0):
             form = AptidaoForm(request.POST, instance=aptidao)
         if form.is_valid():
             form.save()
-        return redirect('/portofolio/aptidoes/list/')
+        return redirect('/backend/aptidoes/list/')
     
 @login_required
 def aptidoes_delete(request, id):
     aptidao = Aptidao.objects.get(pk=id)
     aptidao.delete()
-    return redirect('/portofolio/aptidoes/list/')
+    return redirect('/backend/aptidoes/list/')
 
 @login_required
 def aptidoes_list(request):
@@ -367,13 +367,13 @@ def tecnologias_form(request):
         form = TecnologiaForm(request.POST)
         if form.is_valid():
             form.save()
-        return redirect('/portofolio/tecnologias/list/')
+        return redirect('/backend/tecnologias/list/')
     
 @login_required
 def tecnologias_delete(request, id):
     tecnologia = Tecnologia.objects.get(pk=id)
     tecnologia.delete()
-    return redirect('/portofolio/tecnologias/list/')
+    return redirect('/backend/tecnologias/list/')
 
 @login_required
 def tecnologias_list(request):
@@ -399,13 +399,13 @@ def tipo_tecnologias_form(request, id=0):
             form = TipoTecnologiaForm(request.POST, instance=tipo_tecnologia)
         if form.is_valid():
             form.save()
-        return redirect('/portofolio/tipo-tecnologias/list/')
+        return redirect('/backend/tipo-tecnologias/list/')
     
 @login_required
 def tipo_tecnologias_delete(request, id):
     tipo_tecnologia = TipoTecnologia.objects.get(pk=id)
     tipo_tecnologia.delete()
-    return redirect('/portofolio/tipo-tecnologias/list/')
+    return redirect('/backend/tipo-tecnologias/list/')
 
 @login_required
 def tipo_tecnologias_list(request):
@@ -431,13 +431,13 @@ def tipo_aptidoes_form(request, id=0):
             form = TipoAptidaoForm(request.POST, instance=tipo_aptidao)
         if form.is_valid():
             form.save()
-        return redirect('/portofolio/tipo-aptidoes/list/')
+        return redirect('/backend/tipo-aptidoes/list/')
     
 @login_required
 def tipo_aptidoes_delete(request, id):
     tipo_aptidao = TipoAptidao.objects.get(pk=id)
     tipo_aptidao.delete()
-    return redirect('/portofolio/tipo-aptidoes/list/')
+    return redirect('/backend/tipo-aptidoes/list/')
 
 @login_required
 def tipo_aptidoes_list(request):
@@ -463,13 +463,13 @@ def tipo_projetos_form(request, id=0):
             form = TipoProjetoForm(request.POST, instance=tipo_projeto)
         if form.is_valid():
             form.save()
-        return redirect('/portofolio/tipo-projetos/list/')
+        return redirect('/backend/tipo-projetos/list/')
     
 @login_required
 def tipo_projetos_delete(request, id):
     tipo_projeto = TipoProjeto.objects.get(pk=id)
     tipo_projeto.delete()
-    return redirect('/portofolio/tipo-projetos/list/')
+    return redirect('/backend/tipo-projetos/list/')
 
 @login_required
 def tipo_projetos_list(request):

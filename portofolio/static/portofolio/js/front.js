@@ -95,8 +95,6 @@ $(document).ready(function(){
         items: 3,
         loop: true,
         margin: 20,
-        nav : true,
-        navText: ["<i class='fas fa-angle-up'></i>","<i class='fas fa-angle-up'></i>"],
         dots: false,
         responsive: {
             0:{
@@ -114,6 +112,8 @@ $(document).ready(function(){
         }
     });
 });
+
+
 
 $(document ).ready(function() {
     $('.dropdown ul>li').click(function(){
