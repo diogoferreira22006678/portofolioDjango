@@ -478,6 +478,10 @@ def tipo_projetos_list(request):
 
     return render(request, 'portofolio/tipos/tipo_projetos/tipo_projeto_list.html', context)
 
+def index(request):
+    return render(request, 'front/index.html')
+
+
 
 
 

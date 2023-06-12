@@ -1,0 +1,657 @@
+/*  import google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+html{
+    scroll-behavior: smooth;
+}
+/* custom scroll bar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.max-width{
+    max-width: 1300px;
+    margin: auto;
+    padding: 0 20px;
+}
+.about, footer{
+    font-family: 'Poppins', sans-serif;
+}
+
+section .title{
+    position: relative;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 500;
+    margin-bottom: 60px;
+    padding-bottom: 20px;
+    font-family: 'Ubuntu', sans-serif;
+    color : #1463F3;
+}
+section .title::before{
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    width: 180px;
+    height: 3px;
+    background: #1463F3;
+    transform: translateX(-50%);
+}
+section .title::after{
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    font-size: 20px;
+    color: #1463F3;
+    padding: 0 5px;
+    transform: translateX(-50%);
+}
+
+/* navbar styling */
+.navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  padding: 30px 0;
+  font-family: 'Ubuntu', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.navbar.sticky {
+  padding: 15px 0;
+  background: #1463F3;
+}
+.navbar.red-bg {
+  background-color: #a70000;
+}
+.navbar.green-bg {
+  background-color: green;
+}
+.scroll-up-btn.blue{
+  background: #1463F3;
+}
+.scroll-up-btn.red{
+  background: #a70000;
+}
+.scroll-up-btn.green{
+  background: green;
+}
+
+
+.navbar .max-width {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar .logo a {
+  color: #fff;
+  font-size: 35px;
+  font-weight: 600;
+}
+
+.navbar .logo a span {
+  color: #1463F3;
+  transition: all 0.3s ease;
+}
+
+.navbar.sticky .logo a span {
+  color: #fff;
+}
+
+.navbar .menu {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  list-style: none;
+}
+
+.navbar .menu li {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  position: relative;
+}
+
+.navbar .menu li a {
+  display: block;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  margin-left: 25px;
+  transition: color 0.3s ease;
+}
+
+.navbar .menu li a:hover {
+  color: #1463F3;
+}
+
+.navbar.sticky .menu li a:hover {
+  color: #fff;
+}
+
+/* dropdown menu */
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  z-index: 1;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  min-width: 160px;
+  /* semitransparent background layer */
+  background-color: rgba(0, 0, 0, 0.9);
+  border-radius: 0 0 5px 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+.dropdown li {
+  margin: 0;
+  padding: 0;
+}
+
+.dropdown a {
+  display: block;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 12px 16px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.dropdown a:hover {
+  color: #fff;
+}
+
+.navbar .menu li:hover .dropdown {
+  display: block;
+}
+
+/* menu btn styling */
+.menu-btn {
+  color: #fff;
+  font-size: 23px;
+  cursor: pointer;
+  display: none;
+}
+.scroll-up-btn{
+  position: fixed;
+  height: 45px;
+  width: 42px;
+  background: #1463F3;
+  right: 30px;
+  bottom: 10px;
+  text-align: center;
+  line-height: 45px;
+  color: #fff;
+  z-index: 9999;
+  font-size: 30px;
+  border-radius: 6px;
+  border-bottom-width: 2px;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+.scroll-up-btn.show{
+  bottom: 30px;
+  opacity: 1;
+  pointer-events: auto;
+}
+.scroll-up-btn:hover{
+  filter: brightness(90%);
+}
+
+/* home section styling */
+.home{
+    display: flex;
+    background: url('/static/portofolio/media/front/banner.jpg') no-repeat center;
+    height: 100vh;
+    color: #fff;
+    min-height: 500px;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Ubuntu', sans-serif;
+}
+.home .max-width{
+  width: 100%;
+  display: flex;
+}
+.home .max-width .row{
+  margin-right: 0;
+}
+.home .home-content .text-1{
+    font-size: 27px;
+}
+.home .home-content .text-2{
+    font-size: 75px;
+    font-weight: 600;
+    margin-left: -3px;
+}
+.home .home-content .text-3{
+    font-size: 40px;
+    margin: 5px 0;
+}
+.home .home-content .text-3 span{
+    color: #1463F3;
+    font-weight: 500;
+}
+.home .home-content #talkWithMe{
+    display: inline-block;
+    background: #1f306a;
+    color: #fff;
+    font-size: 25px;
+    padding: 12px 50px;
+    margin-top: 20px;
+    font-weight: 400;
+    border-radius: 6px;
+    border: 2px solid #1f306a;
+    transition: all 0.3s ease;
+}
+
+.home .home-content #talkWithMe:hover{
+    background: none;
+    color : #fff;
+}
+
+.home .home-content a {
+  display: inline-block;
+  color: #fff;
+  font-size: 25px;
+  padding: 16px 16px;
+  margin-top: 20px;
+  font-weight: 400;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.home .home-content a:hover {
+  color:rgb(87, 87, 87);
+}
+
+/* Border Between Content */
+.border-btw-content {
+  background: url('/static/portofolio/media/front/banner.jpg') no-repeat center;
+  background-size: cover;
+  background-color: transparent;
+  background-attachment: fixed;
+  padding: 80px 0;
+
+}
+
+.container{
+  justify-content: center;
+  padding-top: 5%;
+  padding-bottom: 10%;
+}
+
+/* about section styling */
+.about {
+  background-image: url('/static/portofolio/media/front/pokemon-map.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.about .title, .studies .title, .skills .title {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 50px;
+  color: #0c193d;
+}
+
+.about-content, .studies-content, .skills-content, .projects-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+
+.about-content .left-col, .studies-content .left-col, .skills-content .left-col {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.about-content .left-col img, .studies-content .right-col img {
+  transform: scaleX(-1);
+}
+
+.about-content .right-col, .studies-content .right-col, .skills-content .right-col {
+  flex: 1;
+}
+/* when image is on right side */
+.studies-content .right-col img {
+  margin-left: 15%;
+}
+
+.about-content .text, .studies-content .text, .skills-content .text {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 30px;
+  color: #0c193d;
+}
+
+.about-content p, .studies-content p, .skills-content p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #7b7b7b;
+}
+
+.about-content a, .studies-content a, .skills-content a {
+  display: inline-block;
+  background-color: #0c193d;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 12px 24px;
+  border-radius: 4px;
+  margin-top: 30px;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.about-content a:hover, .studies-content a:hover, .skills-content a:hover {
+  background-color: #1f306a;
+}
+
+/* style the right column */
+.right-col{
+  font-family: 'Ubuntu', sans-serif;
+}
+.right-col .text{
+  font-size: 20px;
+  line-height: 30px;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+.right-col .text span{
+  color: #1463F3;
+  font-weight: 500;
+}
+
+/* projects section styling */
+
+.projects {
+  background-image: url('/static/portofolio/media/front/pokemon-map.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.projects .title {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 50px;
+  color: #a70000;
+}
+.projects .title::before {
+  background: #ff0000;
+}
+.carousel {
+  margin: 20px auto;
+  width: 80%;
+}
+
+.card {
+  border-radius: 5px;
+  display: inline-block;
+  margin: 10px;
+  position: relative;
+  width: 300px;
+}
+
+.box {
+  padding: 20px;
+}
+
+.box img {
+  /* fit content to box */
+  max-width: 100%;
+  height: auto;
+
+}
+
+.text {
+  color: #a70000;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.card .box p, .card .overlay p {
+  font-size: 1.2rem;
+  color: #7b7b7b;
+  font-weight: 600;
+}
+
+.read-more-btn {
+  background-color: #a70000;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 10px;
+  padding: 10px 20px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Ubuntu', sans-serif;
+  border-radius: 6px;
+  border: 2px solid #a70000;
+  transition: all 0.3s ease;
+
+}
+
+.read-more-btn:hover {
+  color: #a70000;
+  background-color: #fff;
+}
+
+.project-photo {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+  margin-bottom: 10px;
+}
+
+/* projects that im interested in */
+.container-flex{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+.grid{
+  max-width: 990px;
+  margin: 0 auto;
+}
+
+
+/* contact section styling */
+
+.contact {
+  background-image: url('/static/portofolio/media/front/pokemon-map.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.contact .title {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 50px;
+  color: green;
+}
+
+.contact .title::before {
+  background: green;
+}
+
+/* Form styles */
+
+.contact-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.contact-form {
+  background-color: #fff;
+  padding: 20px 25px;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.form-group input,
+.form-group textarea {
+  font-size: 20px; 
+  border: 1px solid #ccc; 
+  border-radius: 5px;
+  padding: 10px; 
+  width: 100%;
+  box-sizing: border-box; 
+  margin-bottom: 20px; 
+  resize: vertical; 
+  font: 'Ubuntu', sans-serif;
+}
+
+.contact-form .form-control {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 20px;
+}
+
+.contact-form .form-control:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.contact-form textarea.form-control {
+  resize: none;
+}
+
+.submit-btn {
+  background-color: #008000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #006600;
+}
+
+/* footer section styling */
+footer{
+    background: #111;
+    padding: 15px 23px;
+    color: #fff;
+    text-align: center;
+}
+footer span a{
+    color: #1463F3;
+    text-decoration: none;
+}
+footer span a:hover{
+    text-decoration: underline;
+}
+/* responsive media query start */
+
+@media (max-width: 991px) {
+    .max-width{
+        padding: 0 50px;
+    }
+}
+
+@media (max-width: 700px){
+  .menu-btn{
+  display: block;
+  z-index: 999;
+  }
+  .menu-btn i.active:before{
+  content: "\f00d";
+  }
+
+  .navbar .menu{
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  left: -100%;
+  top: 0;
+  background: #111;
+  text-align: center;
+  padding-top: 70px;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start
+  }
+  .navbar .menu.active{
+  left: 0;
+  }
+  .navbar .menu li {
+  display: block;
+  margin-bottom: 30px;
+  }
+  .navbar .menu li:hover .dropdown {
+  position: relative;
+  top: 20px;
+  background-color: #393939;
+  }
+}
+
+@media (max-width: 540px) {
+  #celebi {
+    display: none;
+  }
+
+  #typed {
+    font-size: 1.5rem;
+  }
+
+  #typed2 {
+    font-size: 1.1rem;
+  }
+
+  #contact-right {
+    display: none;
+    flex: 0;
+  }
+
+}
+
+
+
