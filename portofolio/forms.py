@@ -103,7 +103,7 @@ class ProjetoForm(forms.ModelForm):
         widgets = {
             'inicio': forms.DateInput(attrs={'type': 'date'}),
             'fim': forms.DateInput(attrs={'type': 'date'}),
-            'tipo': forms.Select(attrs={'class': 'form-control'}),
+            'tecnologias': forms.SelectMultiple(),
         }
 
     # Select field tem de ser Escolhe a Pessoa
