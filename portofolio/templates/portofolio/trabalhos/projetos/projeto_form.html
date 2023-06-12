@@ -39,7 +39,17 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
+                        {{form.resumo|as_crispy_field}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
                         {{form.descricao|as_crispy_field}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        {{form.pokemon|as_crispy_field}}
                     </div>
                 </div>
                 <button class="register-custom btn btn-sucess btn-lg" type="submit">

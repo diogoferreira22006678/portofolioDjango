@@ -11,7 +11,6 @@ class Pessoa (models.Model):
     resumo_sobre = models.TextField()
     resumo_estudos = models.TextField()
     resumo_competencias = models.TextField()
-    cv = models.FileField(upload_to='cv/', null=True, blank=True)
 
     def __str__(self):
         return self.nome + ' ' + self.sobrenome
