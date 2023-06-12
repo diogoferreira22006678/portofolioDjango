@@ -7,6 +7,11 @@ class Pessoa (models.Model):
     idade = models.IntegerField()
     linkedin = models.URLField(max_length=200, null=True, blank=True)
     github = models.URLField(max_length=200, null=True, blank=True)
+    instagram = models.URLField(max_length=200, null=True, blank=True)
+    resumo_sobre = models.TextField()
+    resumo_estudos = models.TextField()
+    resumo_competencias = models.TextField()
+    cv = models.FileField(upload_to='cv/', null=True, blank=True)
 
     def __str__(self):
         return self.nome + ' ' + self.sobrenome
@@ -71,6 +76,7 @@ class TipoProjeto(models.Model):
 
 class Projeto(models.Model):
     nome = models.CharField(max_length=255)
+    resumo = models.TextField()
     descricao = models.TextField()
     github = models.URLField(max_length=200, null=True, blank=True)
     pessoa = models.ForeignKey(Pessoa, on_delete=models.CASCADE)
@@ -78,6 +84,7 @@ class Projeto(models.Model):
     tipo = models.ForeignKey('TipoProjeto', on_delete=models.CASCADE)
     tecnologias = models.ManyToManyField('Tecnologia')
     cadeira = models.ForeignKey('Cadeira', on_delete=models.CASCADE, null=True, blank=True)
+    pokemon = models.ImageField(upload_to='images/', null=True, blank=True)
 
     def __str__(self):
         return self.nome
@@ -120,6 +127,7 @@ class Tecnologia(models.Model):
     nome = models.CharField(max_length=255)
     ano_criacao = models.IntegerField()
     pessoa = models.ForeignKey(Pessoa, on_delete=models.CASCADE)
+    resumo = models.TextField()
     link_oficial = models.URLField()
     descricao = models.TextField()
     tipo = models.ForeignKey('TipoTecnologia', on_delete=models.CASCADE)
@@ -136,6 +144,15 @@ class ExperienciaProfissional (models.Model):
 
     def __str__(self):
         return self.nome
+    
+class FormResponses (models.Model):
+    nome = models.CharField(max_length=255)
+    email = models.CharField(max_length=255)
+    assunto = models.CharField(max_length=255)
+    mensagem = models.TextField()
+
+    def __str__(self):
+        return self.nome + ' ' + self.email
     
 
     
