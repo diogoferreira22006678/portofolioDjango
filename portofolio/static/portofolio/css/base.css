@@ -75,6 +75,11 @@ a {
   width: 80%;
   margin: auto;
 }
+.container{
+  display: flex;
+  margin: auto;
+  padding-bottom: 30px;
+}
 .side-bar{
  background: transparent;
  backdrop-filter: blur(15px);
