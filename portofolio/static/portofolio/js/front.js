@@ -92,20 +92,24 @@ $(document).ready(function(){
         margin: 20,
         loop: true,
         autoplay: true,
+        autoplayTimeOut: 2000,
+        autoplayHoverPause: true, 
         items: 3,
         loop: true,
         margin: 20,
+        nav: true,
+        navText: ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
         dots: false,
         responsive: {
             0:{
                 items: 1,
                 nav: false
             },
-            100:{
+            600:{
                 items: 2,
                 nav: false
             },
-            300:{
+            1000:{
                 items: 3,
                 nav: false
             }
@@ -127,6 +131,18 @@ $(document ).ready(function() {
 
 // Get all the dropdown links
 const dropdownLinks = document.querySelectorAll('.menu .dropdown-link');
+
+// get all the li from menu
+const menuLinks = document.querySelectorAll('.menu li');
+
+// if li doenst have a ul inside, then if user clicks on it, it will close the menu
+menuLinks.forEach(link => {
+    if(link.querySelector('ul') == null){
+        link.addEventListener('click', () => {
+            $('.menu-btn').click();
+        });
+    }
+});
 
 // Attach click event listener to each dropdown link
 dropdownLinks.forEach(link => {

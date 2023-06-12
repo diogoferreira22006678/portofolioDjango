@@ -56,12 +56,12 @@
         <div class="max-width">
             <div class="home-content">
                 <div class="text-1">Hello, my name is</div>
-                <div class="text-2">Diogo Ferreira</div>
+                <div class="text-2">{{ pessoa.nome }} {{ pessoa.sobrenome }}</div>
                 <div id="typed" class="text-3">And I'm a <span class="typing"></span></div>
                 <a href="#contactNav" id="talkWithMe">Talk with me</a>
-                <a href="https://www.linkedin.com/in/diogo-ferreira-6731a1209/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/diogoferreira22006678" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://www.instagram.com/ferreidiogo/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="{{ pessoa.linkedin }}" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="{{ pessoa.github }}" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="{{ pessoa.instagram }}" target="_blank"><i class="fab fa-instagram"></i></a>
         </div>
     </section>
 
@@ -75,13 +75,12 @@
             <h2 class="title">About me</h2>
             <div class="about-content" id="abouNav">
                 <div class="left-col">
-                    <img src="images/profile-1.jpeg" alt="" width="300px" height="300px">
+                    <img src="{% static 'portofolio/media/front/profile-1.jpeg' %}" alt="" width="300px" height="300px">
                 </div>
                 <div class="right-col">
-                    <div id="typed2" class="text">I'm Diogo and I'm a <span class="typing-2"></span></div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-                    
-                    <a href="#">Download CV</a>
+                    <div id="typed2" class="text">I'm {{ pessoa.nome }} and I'm a <span class="typing-2"></span></div>
+                    <p>{{ pessoa.resumo_sobre }}</p>
+                    <a href="{% url 'portofolio:download_file' %}">Download CV</a>
                 </div>
             </div>
           </div>
@@ -94,10 +93,11 @@
           <h2 class="title">My Studies</h2>
           <div class="studies-content">
             <div class="left-col">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+              <p>{{ pessoa.resumo_estudos }}</p>
+              <a href="#">Read More</a>
             </div>
             <div class="right-col" style="display: flex;justify-content: right">
-              <img src="images/profile-2.jpeg" alt="" width="300px" height="300px">
+              <img src="{% static 'portofolio/media/front/profile-2.jpeg' %}" alt="" width="300px" height="300px">
             </div>
           </div>
           </div>
@@ -110,10 +110,11 @@
           <h2 class="title">Personal skills and competences</h2>
           <div class="skills-content">
             <div class="left-col">
-              <img src="images/profile-3.jpeg" alt="" width="300px" height="300px">
+              <img src="{% static 'portofolio/media/front/profile-3.jpeg' %}" alt="" width="300px" height="300px">
             </div>
             <div class="right-col">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+              <p>{{ pessoa.resumo_competencias }}</p>
+              <a href="#">Read More</a>
             </div>
           </div>
           </div>
@@ -316,7 +317,11 @@
 
     <!-- footer section start -->
     <footer>
-        <span>Created By <a href="https://github.com/diogoferreira22006678">Diogo Ferreira</a> | <span class="far fa-copyright"></span> 2023 All rights reserved.</span>
+      <span>Created By 
+        <a href="https://github.com/diogoferreira22006678">Diogo Ferreira</a> | 
+        <span class="far fa-copyright"></span>
+        {% now "Y" %} All rights reserved.
+      </span>
     </footer>
 
     <script src="{% static 'portofolio/js/front.js' %}"></script>

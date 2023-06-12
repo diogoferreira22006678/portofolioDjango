@@ -90,6 +90,12 @@ class Projeto(models.Model):
 
 class Linguagem(models.Model):
     nome = models.CharField(max_length=255)
+    acronimo = models.CharField(max_length=255)
+    ano_criacao = models.IntegerField()
+    criador = models.CharField(max_length=255, null=True, blank=True)
+    logotipo = models.ImageField(upload_to='images/', null=True, blank=True)
+    imagem_exemplo = models.ImageField(upload_to='images/', null=True, blank=True)
+    link_oficial = models.URLField()
     descricao = models.TextField()
 
     def __str__(self):

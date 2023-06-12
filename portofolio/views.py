@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
+import os 
+from django.http import FileResponse
+from django.conf import settings
 
 from .forms import PessoaForm
 from .forms import ProfessorForm
@@ -232,7 +235,7 @@ def cadeiras_delete(request, id):
 @login_required
 def  projetos_list(request):
 
-    context = {'projectos_list': Projeto.objects.all()}
+    context = {'projetos_list': Projeto.objects.all()}
 
     return render(request, 'portofolio/trabalhos/projetos/projeto_list.html', context)
 
@@ -247,19 +250,19 @@ def projetos_form(request, id=0):
         return render(request, 'portofolio/trabalhos/projetos/projeto_form.html', {'form': form})
     else:
         if id == 0:
-            form = ProjetoForm(request.POST)
+            form = ProjetoForm(request.POST, request.FILES)
         else:
             projecto = Projeto.objects.get(pk=id)
             form = ProjetoForm(request.POST, instance=projecto)
         if form.is_valid():
             form.save()
-        return redirect('/backend/projectos/list/')
+        return redirect('/backend/projetos/list/')
     
 @login_required
 def projetos_delete(request, id):
     projecto = Projeto.objects.get(pk=id)
     projecto.delete()
-    return redirect('/backend/projectos/list/')
+    return redirect('/backend/projetos/list/')
 
 @login_required
 def  linguagens_list(request):
@@ -479,7 +482,26 @@ def tipo_projetos_list(request):
     return render(request, 'portofolio/tipos/tipo_projetos/tipo_projeto_list.html', context)
 
 def index(request):
-    return render(request, 'front/index.html')
+
+    pessoa = Pessoa.objects.get(nome='Diogo', sobrenome='Ferreira')
+
+    return render(request, 'front/index.html', {'pessoa': pessoa})
+
+def download_file(request):
+    # Retrieve the file path or file object
+    file_path = os.path.join(settings.MEDIA_ROOT, 'cv.pdf')
+    
+    # Open the file using FileResponse
+    file = open(file_path, 'rb')
+    
+    # Create a FileResponse object with appropriate headers
+    response = FileResponse(file)
+    
+    # Set the content type and headers for file download
+    response['Content-Disposition'] = 'attachment; filename="cv.pdf"'
+    response['Content-Type'] = 'application/pdf'
+    
+    return response
 
 
 

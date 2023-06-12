@@ -1,6 +1,8 @@
 #Urls.py
 from django.urls import path
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 app_name = 'portofolio'
 
@@ -78,7 +80,7 @@ urlpatterns = [
     path('backend/tipo-projetos/delete/<int:id>', views.tipo_projetos_delete, name='tipo_projeto_delete'), # get req. to delete operation
 
     # Frontend urls
-
+    path('download/', views.download_file, name='download_file'),
     path('', views.index, name='index'),
     
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

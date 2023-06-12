@@ -95,7 +95,8 @@ class CadeiraForm(forms.ModelForm):
         self.fields['professor'].empty_label = "Escolhe o Professor"
 
 class ProjetoForm(forms.ModelForm):
-    tecnologias = forms.ModelMultipleChoiceField(queryset=Tecnologia.objects.all(), widget=forms.SelectMultiple)
+    tecnologias = forms.ModelMultipleChoiceField(queryset=Tecnologia.objects.all(), widget=forms.CheckboxSelectMultiple)
+    linguagens = forms.ModelMultipleChoiceField(queryset=Linguagem.objects.all(), widget=forms.CheckboxSelectMultiple)
 
     class Meta:
         model = Projeto
@@ -103,7 +104,6 @@ class ProjetoForm(forms.ModelForm):
         widgets = {
             'inicio': forms.DateInput(attrs={'type': 'date'}),
             'fim': forms.DateInput(attrs={'type': 'date'}),
-            'tecnologias': forms.SelectMultiple(),
         }
 
     # Select field tem de ser Escolhe a Pessoa
@@ -111,8 +111,16 @@ class ProjetoForm(forms.ModelForm):
         super(ProjetoForm, self).__init__(*args, **kwargs)
         self.fields['pessoa'].empty_label = "Escolhe a Pessoa"
         self.fields['tipo'].empty_label = "Escolhe o Tipo"
-        self.fields['tecnologias'].empty_label = "Escolhe as Tecnologias"
+        self.fields['tecnologias'].empty_label = None
         self.fields['cadeira'].empty_label = "Escolhe a Cadeira"
+    
+    # If the field is not required, it will not be validated on the server
+    def clean_cadeira(self):
+        # cadeira is not required
+        if not self.cleaned_data['cadeira']:
+            return None
+        return self.cleaned_data['cadeira']
+
 
 class LinguagemForm(forms.ModelForm):
                     
@@ -149,30 +157,30 @@ class AptidaoForm(forms.ModelForm):
 
 class TecnologiaForm(forms.ModelForm):
         
-        class Meta:
-            model = Tecnologia
-            fields ='__all__'
-    
-        # Select field tem de ser Escolhe a Pessoa
-        def __init__(self, *args, **kwargs):
-            super(TecnologiaForm, self).__init__(*args, **kwargs)
-            self.fields['pessoa'].empty_label = "Escolhe a Pessoa"
-            self.fields['tipo'].empty_label = "Escolhe o Tipo de Tecnologia"
+    class Meta:
+        model = Tecnologia
+        fields ='__all__'
+
+    # Select field tem de ser Escolhe a Pessoa
+    def __init__(self, *args, **kwargs):
+        super(TecnologiaForm, self).__init__(*args, **kwargs)
+        self.fields['pessoa'].empty_label = "Escolhe a Pessoa"
+        self.fields['tipo'].empty_label = "Escolhe o Tipo de Tecnologia"
 
 class TipoTecnologiaForm(forms.ModelForm):
         
-        class Meta:
-            model = TipoTecnologia
-            fields ='__all__'
+    class Meta:
+        model = TipoTecnologia
+        fields ='__all__'
 
 class TipoAptidaoForm(forms.ModelForm):
             
-            class Meta:
-                model = TipoAptidao
-                fields ='__all__'
+    class Meta:
+        model = TipoAptidao
+        fields ='__all__'
 
 class TipoProjetoForm(forms.ModelForm):
                 
-                class Meta:
-                    model = TipoProjeto
-                    fields ='__all__'
+    class Meta:
+        model = TipoProjeto
+        fields ='__all__'

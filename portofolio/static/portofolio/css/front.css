@@ -331,8 +331,6 @@ section .title::after{
 
 .about-content .left-col, .studies-content .left-col, .skills-content .left-col {
   flex: 1;
-  display: flex;
-  justify-content: center;
 }
 
 .about-content .left-col img, .studies-content .right-col img {

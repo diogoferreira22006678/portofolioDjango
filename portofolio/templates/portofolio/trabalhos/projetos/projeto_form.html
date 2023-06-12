@@ -13,7 +13,7 @@
             <h1 class="display-4">Registar Projetos</h1>
             <p class="lead">Aqui irás conseguir adicionar projetos no Backend.</p>
             <hr class="my-4">
-            <form action="" method="post" autocomplete="off">
+            <form action="" method="post" autocomplete="off" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="row">
                     <div class="col-md-6">
@@ -30,11 +30,16 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         {{form.github|as_crispy_field}}
                     </div>
+                </div>
+                <div class="row">
                     <div class="col-md-6">
                         {{form.tecnologias|as_crispy_field}}
+                    </div>
+                    <div class="col-md-6">
+                        {{form.linguagens|as_crispy_field}}
                     </div>
                 </div>
                 <div class="row">

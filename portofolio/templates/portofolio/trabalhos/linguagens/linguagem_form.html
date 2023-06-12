@@ -16,7 +16,31 @@
             <form action="" method="post" autocomplete="off">
                 {% csrf_token %}
                 <div class="row">
+                    <div class="col-md-4">
                         {{form.nome|as_crispy_field}}
+                    </div>
+                    <div class="col-md-4">
+                        {{form.acronimo|as_crispy_field}}
+                    </div>
+                    <div class="col-md-4">
+                        {{form.ano_criacao|as_crispy_field}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        {{form.link_oficial|as_crispy_field}}
+                    </div>
+                    <div class="col-md-4">
+                        {{form.criador|as_crispy_field}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        {{form.logotipo|as_crispy_field}}
+                    </div>
+                    <div class="col-md-6">
+                        {{form.imagem_exemplo|as_crispy_field}}
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">

@@ -28,9 +28,7 @@
                             <td>{{projeto.pessoa}}</td>
                             <td>{{projeto.linguagens}}</td>
                             <td>{{projeto.tipo}}</td>
-                            {%if tipo == 'Escolar'%}
-                                <td>{{projeto.cadeira}}</td>
-                            {%endif%}
+                            <td>{{projeto.cadeira}}</td>
                             <td>
                                 <a href="{%url 'portofolio:projeto_update' projeto.id%}" class="btn btn-warning btn-sm">
                                     <i class="fas fa-user-edit"></i>
