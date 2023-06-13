@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
 import os 
+from datetime import datetime
 from django.http import FileResponse
 from django.conf import settings
 
@@ -503,13 +504,27 @@ def download_file(request):
     
     return response
 
+
 def studies(request):
 
     pessoa = Pessoa.objects.get(nome='Diogo', sobrenome='Ferreira')
 
     escolas = Escola.objects.filter(pessoa_id=pessoa.id)
 
-    return render(request, 'front/studies.html', {'pessoa': pessoa, 'escolas': escolas})
+    for escola in escolas:
+        escola.inicio = escola.inicio.strftime("%Y")
+        escola.fim = escola.fim.strftime("%Y")
+
+    universidades = Universidade.objects.filter(pessoa_id=pessoa.id)
+    for universidade in universidades:
+        universidade.inicio = universidade.inicio.strftime("%Y")
+        universidade.fim = universidade.fim.strftime("%Y")
+        current_year = datetime.now().year
+
+        if universidade.fim > current_year.__str__():
+            universidade.fim = "Presente"
+        
+    return render(request, 'front/studies.html', {'pessoa': pessoa, 'escolas': escolas, 'universidades': universidades})
 
 
 

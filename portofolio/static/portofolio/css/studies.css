@@ -44,6 +44,7 @@ body{
     left: 50%;
     margin-left: -3px;
     animation:  moveline 6s linear forwards;
+    z-index: -1;
 }
 @keyframes moveline{
     0%{
@@ -130,7 +131,6 @@ body{
 .container img{
     position: absolute;
     width: 40px;
-    border-radius: 50%;
     right: -20px;
     top: 32px;
     z-index: 10;
