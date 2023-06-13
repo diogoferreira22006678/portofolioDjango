@@ -57,7 +57,33 @@ body{
     padding: 10px 50px;
     position: relative;
     width: 50%;
+    animation:  movedown 1s linear forwards;
+    opacity: 0;
 }
+@keyframes movedown{
+    0%{
+        opacity: 1;
+        transform: translateY(-30px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+.container:nth-child(1){
+    animation-delay: 1s;
+}
+.container:nth-child(2){
+    animation-delay: 2s;
+}
+.container:nth-child(3){
+    animation-delay: 3s;
+}
+.container:nth-child(4){
+    animation-delay: 4s;
+}
+
 .box{
     padding: 20px 30px;
     position: relative;
@@ -168,4 +194,40 @@ footer span a:hover{
 }
 .footer-center .socials a:not(:last-child){
     margin-right: 10px;
+}
+
+@media screen and (max-width:600px){
+    .timeline::after{
+        left: 31px;
+    }
+    .timeline{
+        margin: 50px auto;
+    }
+    .container{
+        width: 100%;
+        padding-left: 80px;
+        padding-right: 25px;
+    }
+    .box small{
+        margin-bottom: 10px;
+    }
+    .right-container{
+        left: 0;
+    }
+    .right-container img, .left-container img{
+        left: 10px;
+    }
+    .left-container-arrow{
+        height: 0;
+        width: 0;
+        position: absolute;
+        top: 28px;
+        z-index: 1;
+        border-top: 15px solid transparent;
+        border-bottom: 15px solid transparent;
+        border-right: 15px solid #fff;
+        left: -15px;
+        border-left: none;
+    }
+    
 }
