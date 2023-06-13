@@ -20,6 +20,8 @@ class Universidade (models.Model):
     local = models.CharField(max_length=255)
     logo = models.ImageField(upload_to='logos/universidade/', null=True, blank=True)
     pessoa = models.ForeignKey(Pessoa, on_delete=models.CASCADE)
+    inicio = models.DateField(default='2020-01-01')
+    fim = models.DateField(default='2020-01-01')
 
     def __str__(self):
         return self.nome
@@ -30,6 +32,7 @@ class Escola (models.Model):
     pessoa = models.ForeignKey(Pessoa, on_delete=models.CASCADE)
     inicio = models.DateField()
     fim = models.DateField()
+    logo = models.ImageField(upload_to='logos/escola/', null=True, blank=True)
 
     def __str__(self):
         return self.nome

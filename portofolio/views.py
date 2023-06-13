@@ -122,7 +122,7 @@ def escolas_form(request, id=0):
         return render(request, 'portofolio/educacao/escolas/escola_form.html', {'form': form})
     else:
         if id == 0:
-            form = EscolaForm(request.POST)
+            form = EscolaForm(request.POST, request.FILES)
         else:
             escola = Escola.objects.get(pk=id)
             form = EscolaForm(request.POST, instance=escola)
@@ -154,7 +154,7 @@ def universidades_form(request, id=0):
         return render(request, 'portofolio/educacao/universidades/universidade_form.html', {'form': form})
     else:
         if id == 0:
-            form = UniversidadeForm(request.POST)
+            form = UniversidadeForm(request.POST, request.FILES)
         else:
             universidade = Universidade.objects.get(pk=id)
             form = UniversidadeForm(request.POST, instance=universidade)
@@ -505,8 +505,11 @@ def download_file(request):
 
 def studies(request):
 
+    pessoa = Pessoa.objects.get(nome='Diogo', sobrenome='Ferreira')
 
-    return render(request, 'front/studies.html')
+    escolas = Escola.objects.filter(pessoa_id=pessoa.id)
+
+    return render(request, 'front/studies.html', {'pessoa': pessoa, 'escolas': escolas})
 
 
 

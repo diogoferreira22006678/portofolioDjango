@@ -26,9 +26,12 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6">
+                        {{ form.logo|as_crispy_field }}
+                    </div>
+                    <div class="col-md-3">
                         {{ form.inicio|as_crispy_field }}
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         {{ form.fim|as_crispy_field }}
                     </div>
                 </div>

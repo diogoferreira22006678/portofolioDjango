@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Pessoa, Universidade, Curso, Professor, Cadeira, Projeto, Linguagem, Tecnologia, Aptidao, ExperienciaProfissional, TipoProjeto, TipoAptidao, TipoTecnologia
+from .models import Pessoa, Universidade, Curso, Professor, Cadeira, Projeto, Linguagem, Tecnologia, Aptidao, ExperienciaProfissional, TipoProjeto, TipoAptidao, TipoTecnologia, Escola
 
 admin.site.register(Pessoa)
 admin.site.register(Universidade)
@@ -16,3 +16,4 @@ admin.site.register(ExperienciaProfissional)
 admin.site.register(TipoProjeto)
 admin.site.register(TipoAptidao)
 admin.site.register(TipoTecnologia)
+admin.site.register(Escola)

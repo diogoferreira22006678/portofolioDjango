@@ -1,5 +1,8 @@
 {%extends 'front/base.html'%}
 {%load static%}
+{%block head%}
+<link rel="stylesheet" href="{% static 'portofolio/css/front.css' %}">
+{%endblock%}
 {%block content%}
 
 <nav class="navbar">
@@ -296,4 +299,5 @@
     </section>
 
     <div class="border-btw-content"></div>
+    <script src="{% static 'portofolio/js/front.js' %}"></script>
 {% endblock %}
