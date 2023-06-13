@@ -82,5 +82,6 @@ urlpatterns = [
     # Frontend urls
     path('download/', views.download_file, name='download_file'),
     path('', views.index, name='index'),
+    path('studies/', views.studies, name='studies'),
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

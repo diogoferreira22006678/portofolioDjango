@@ -503,6 +503,10 @@ def download_file(request):
     
     return response
 
+def studies(request):
+
+
+    return render(request, 'front/studies.html')
 
 
 

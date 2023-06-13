@@ -18,6 +18,7 @@ class Pessoa (models.Model):
 class Universidade (models.Model):
     nome = models.CharField(max_length=255)
     local = models.CharField(max_length=255)
+    logo = models.ImageField(upload_to='logos/universidade/', null=True, blank=True)
     pessoa = models.ForeignKey(Pessoa, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -49,17 +50,20 @@ class Professor (models.Model):
     sobrenome = models.CharField(max_length=255)
     universidade = models.ForeignKey(Universidade, on_delete=models.CASCADE)
     linkedin = models.URLField(max_length=200, null=True, blank=True)
+    link_lusofona = models.URLField(max_length=200, null=True, blank=True)
 
     def __str__(self):
         return self.nome + ' ' + self.sobrenome
     
 class Cadeira (models.Model):
     nome = models.CharField(max_length=255)
+    ano = models.IntegerField()
     ects = models.IntegerField()
     curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
-    professor = models.ForeignKey(Professor, on_delete=models.CASCADE)
+    professores = models.ManyToManyField('Professor')
     semestre = models.IntegerField()
     anoEscolar = models.IntegerField()
+    descricao = models.TextField()
 
     def __str__(self):
         return self.nome
@@ -78,12 +82,14 @@ class Projeto(models.Model):
     resumo = models.TextField()
     descricao = models.TextField()
     github = models.URLField(max_length=200, null=True, blank=True)
-    pessoa = models.ForeignKey(Pessoa, on_delete=models.CASCADE)
+    pessoas = models.ManyToManyField(Pessoa)
     linguagens = models.ManyToManyField('Linguagem')
     tipo = models.ForeignKey('TipoProjeto', on_delete=models.CASCADE)
     tecnologias = models.ManyToManyField('Tecnologia')
     cadeira = models.ForeignKey('Cadeira', on_delete=models.CASCADE, null=True, blank=True)
-    pokemon = models.ImageField(upload_to='images/', null=True, blank=True)
+    pokemon = models.ImageField(upload_to='pokemons/', null=True, blank=True)
+    imagem = models.ImageField(upload_to='projetos/', null=True, blank=True)
+    ano = models.IntegerField()
 
     def __str__(self):
         return self.nome
@@ -93,8 +99,8 @@ class Linguagem(models.Model):
     acronimo = models.CharField(max_length=255)
     ano_criacao = models.IntegerField()
     criador = models.CharField(max_length=255, null=True, blank=True)
-    logotipo = models.ImageField(upload_to='images/', null=True, blank=True)
-    imagem_exemplo = models.ImageField(upload_to='images/', null=True, blank=True)
+    logotipo = models.ImageField(upload_to='logos/linguagens/', null=True, blank=True)
+    imagem_exemplo = models.ImageField(upload_to='snippets/', null=True, blank=True)
     link_oficial = models.URLField()
     descricao = models.TextField()
 
@@ -112,6 +118,8 @@ class TipoAptidao (models.Model):
 class Aptidao (models.Model):
     nome = models.CharField(max_length=255)
     descricao = models.TextField()
+    cadeiras = models.ManyToManyField('Cadeira', null=True, blank=True)
+    projetos = models.ManyToManyField('Projeto', null=True, blank=True)
     pessoa = models.ForeignKey(Pessoa, on_delete=models.CASCADE)
     tipo = models.ForeignKey('TipoAptidao', on_delete=models.CASCADE)
 
