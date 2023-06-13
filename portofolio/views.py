@@ -523,8 +523,15 @@ def studies(request):
 
         if universidade.fim > current_year.__str__():
             universidade.fim = "Presente"
+
+    # Get all cursos
+    curso = Curso.objects.all()
+
+    # Order Cadeiras by AnoEscolar and then by Semestre
+    cadeiras = Cadeira.objects.all().order_by('anoEscolar', 'semestre')
+
         
-    return render(request, 'front/studies.html', {'pessoa': pessoa, 'escolas': escolas, 'universidades': universidades})
+    return render(request, 'front/studies.html', {'pessoa': pessoa, 'escolas': escolas, 'universidades': universidades, 'cursos': curso, 'cadeiras': cadeiras})
 
 
 

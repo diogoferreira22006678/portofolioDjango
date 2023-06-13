@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     {% load static %}
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" href="{% static 'portofolio/css/base-front.css' %}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
@@ -21,6 +22,37 @@
     <div class="scroll-up-btn">
         <i class="fas fa-angle-up"></i>
     </div>
+
+    <nav class="navbar">
+        <div class="max-width">
+          <div class="logo">
+            <a href="#">Lab<span>5.</span></a>
+          </div>
+          <ul class="menu">
+            <li><a href="#">Home</a></li>
+            <li>
+              <a href="#about">About</a>
+              <ul class="dropdown" id="about">
+                <li><a href="#resumeNav" >Resume</a></li>
+                <li><a href="#studiesNav">Studies</a></li>
+                <li><a href="#skillsNav">Skills</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#projects" >Projects</a>
+              <ul class="dropdown" id="project">
+                <li><a href="#projects" >Independent</a></li>
+                <li><a href="#ucProjectsNav">UCS</a></li>
+                <li><a href="#techProjectsNav">Tech</a></li>
+              </ul>
+            </li>
+            <li><a href="#contactNav">Contact</a></li>
+          </ul>
+          <div class="menu-btn">
+            <i class="fas fa-bars"></i>
+          </div>
+        </div>
+    </nav>
 
     {% block content %}
 
@@ -55,4 +87,5 @@
       </div>
     </div>
 </footer>
+<script src="{% static 'portofolio/js/base.js' %}"></script>
 </html>

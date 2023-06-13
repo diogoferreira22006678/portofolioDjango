@@ -4,57 +4,68 @@
 <link rel="stylesheet" href="{%static 'portofolio/css/studies.css'%}">
 {%endblock%}
 {%block content%}
+<h2 class="title">Chronological Timeline</h2>
+<div class="timeline">
 
-    <div class="timeline">
-        {% for escola in escolas %}
-            {% if forloop.counter|divisibleby:2 %}
-                <div class="container left-container">    
-                    <img src="{{ escola.logo.url }}" alt="{{ escola.nome }}">
-                    <div class="box">
+    {% for escola in escolas %}
+        {% if forloop.counter|divisibleby:2 %}
+            <div class="container left-container">    
+                <img src="{{ escola.logo.url }}" alt="{{ escola.nome }}">
+                <div class="box">
+                    <h2>{{escola.nome}}</h2>
+                    <!-- only get the year from the date -->
+                    <small>{{escola.inicio}}-{{escola.fim}}</small>
+                    <p>{{escola.local}}</p>
+                    <span class="left-container-arrow"></span>
+                </div>
+            </div>
+        {% else %}
+            <div class="container right-container">
+                <img src="{{ escola.logo.url }}" alt="{{ escola.nome }}">
+                <div class="box">
                         <h2>{{escola.nome}}</h2>
-                        <!-- only get the year from the date -->
                         <small>{{escola.inicio}}-{{escola.fim}}</small>
                         <p>{{escola.local}}</p>
-                        <span class="left-container-arrow"></span>
-                    </div>
-                </div>
-            {% else %}
-                <div class="container right-container">
-                    <img src="{{ escola.logo.url }}" alt="{{ escola.nome }}">
-                    <div class="box">
-                            <h2>{{escola.nome}}</h2>
-                            <small>{{escola.inicio}}-{{escola.fim}}</small>
-                            <p>{{escola.local}}</p>
-                            <span class="right-container-arrow"></span>
-                    </div>
-                </div>
-            {% endif %}
-        {% endfor %}
-        <!-- if number of schools is odd then start universidades in right else start left -->
-        {% if escolas|length|divisibleby:2 %}
-            {% for universidade in universidades %}
-                <div class="container right-container">
-                    <img src="{{ universidade.logo.url }}" alt="{{ universidade.nome }}">
-                    <div class="box">
-                        <h2>{{universidade.nome}}</h2>
-                        <small>{{universidade.inicio}}-{{universidade.fim}}</small>
-                        <p>{{universidade.local}}</p>
                         <span class="right-container-arrow"></span>
-                    </div>
                 </div>
-            {% endfor %}
-        {% else %}
-            {% for universidade in universidades %}
-                <div class="container left-container">
-                    <img src="{{ universidade.logo.url }}" alt="{{ universidade.nome }}">
-                    <div class="box">
-                        <h2>{{universidade.nome}}</h2>
-                        <small>{{universidade.inicio}}-{{universidade.fim}}</small>
-                        <p>{{universidade.local}}</p>
-                        <span class="left-container-arrow"></span>
-                    </div>
-                </div>
-            {% endfor %}
+            </div>
         {% endif %}
-    </div>
+    {% endfor %}
+    <!-- if number of schools is odd then start universidades in right else start left -->
+    {% if escolas|length|divisibleby:2 %}
+        {% for universidade in universidades %}
+            <div class="container right-container">
+                <img src="{{ universidade.logo.url }}" alt="{{ universidade.nome }}">
+                <div class="box">
+                    <h2>{{universidade.nome}}</h2>
+                    <small>{{universidade.inicio}}-{{universidade.fim}}</small>
+                    <p>{{universidade.local}}</p>
+                    <span class="right-container-arrow"></span>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        {% for universidade in universidades %}
+            <div class="container left-container">
+                <img src="{{ universidade.logo.url }}" alt="{{ universidade.nome }}">
+                <div class="box">
+                    <h2>{{universidade.nome}}</h2>
+                    <small>{{universidade.inicio}}-{{universidade.fim}}</small>
+                    <p>{{universidade.local}}</p>
+                    <span class="left-container-arrow"></span>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>
+
+<div class="degree">
+    {% for cadeira in cadeiras %}
+        {{ cadeira.anoEscolar }} - {{ cadeira.semestre }}
+        {% for professor in cadeira.professores.all %}
+            {{ professor.nome }}
+        {% endfor %}
+    {% endfor %}
+</div>
+
 {%endblock%}

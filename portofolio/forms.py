@@ -92,7 +92,6 @@ class CadeiraForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(CadeiraForm, self).__init__(*args, **kwargs)
         self.fields['curso'].empty_label = "Escolhe o Curso"
-        self.fields['professor'].empty_label = "Escolhe o Professor"
 
 class ProjetoForm(forms.ModelForm):
     tecnologias = forms.ModelMultipleChoiceField(queryset=Tecnologia.objects.all(), widget=forms.CheckboxSelectMultiple)
