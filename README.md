@@ -1,4 +1,4 @@
-#Diogo Ferreira's Portfolio 🚀
+# Diogo Ferreira's Portfolio 🚀
 
 👋 Hello, everyone! I'm Diogo Ferreira, a 23-year-old programmer who is passionate about web development. With a background in information management and experience in various technologies, I present to you my portfolio showcasing my skills in the Django framework, as well as other technologies such as Laravel (PHP), Java, and Kotlin. Let's dive in and learn more about me!
 
