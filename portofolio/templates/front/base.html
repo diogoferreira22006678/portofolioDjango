@@ -26,16 +26,16 @@
     <nav class="navbar">
         <div class="max-width">
           <div class="logo">
-            <a href="#">Lab<span>5.</span></a>
+            <a href="{% url 'portofolio:index' %}">Lab<span>5.</span></a>
           </div>
           <ul class="menu">
-            <li><a href="#">Home</a></li>
+            <li><a href="{% url 'portofolio:index' %}">Home</a></li>
             <li>
               <a href="#about">About</a>
               <ul class="dropdown" id="about">
-                <li><a href="#resumeNav" >Resume</a></li>
-                <li><a href="#studiesNav">Studies</a></li>
-                <li><a href="#skillsNav">Skills</a></li>
+                <li><a href="{% url 'portofolio:index' %}#resumeNav">Resume</a></li>
+                <li><a href="{% url 'portofolio:studies' %}">Studies</a></li>
+                <li><a href="{% url 'portofolio:skills' %}">Skills</a></li>
               </ul>
             </li>
             <li>

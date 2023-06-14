@@ -1,0 +1,100 @@
+{%extends 'front/base.html'%}
+{%load static%}
+
+{%block head%}
+<link rel="stylesheet" href="{%static 'portofolio/css/studies.css'%}">
+{%endblock%}
+{%block content%}
+<h2 class="title">Technical Skills</h2>
+<div class="wrapper">
+    {% for skill in skills_technical %}
+        <div class="card">
+            <div class="card-header">
+                <h3>{{skill.nome}}</h3>
+            </div>
+            <div class="card-body">
+                <p>{{skill.descricao}}</p>
+                {% if skill.cadeiras.all %}
+                    <p> <strong>Disciplines: </strong>
+                        {% for cadeira in skill.cadeiras.all %}
+                        <a href="{% url 'portofolio:discipline' cadeira.id %}">{{ cadeira.nome }}</a>{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </p>
+                {% endif %}
+                {% if skill.projetos.all %}
+                    <p><strong>Projects: </strong>{{skill.projetos.all|join:", " }}</p>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<h2 class="title">Linguistic Skills</h2>
+<div class="wrapper">
+    {% for skill in skills_linguistic %}
+        <div class="card">
+            <div class="card-header">
+                <h3>{{skill.nome}}</h3>
+            </div>
+            <div class="card-body">
+                <p>{{skill.descricao}}</p>
+                {% if skill.cadeiras.all %}
+                <p> <strong>Disciplines: </strong>
+                    {% for cadeira in skill.cadeiras.all %}
+                    <a href="{% url 'portofolio:discipline' cadeira.id %}">{{ cadeira.nome }}</a>{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </p>
+                {% endif %}
+                {% if skill.projetos.all %}
+                    <p><strong>Projects: </strong>{{skill.projetos.all|join:", " }}</p>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<h2 class="title">Organizational Skills</h2>
+<div class="wrapper">
+    {% for skill in skills_organizationals %}
+        <div class="card">
+            <div class="card-header">
+                <h3>{{skill.nome}}</h3>
+            </div>
+            <div class="card-body">
+                <p>{{skill.descricao}}</p>
+                {% if skill.cadeiras.all %}
+                    <p> <strong>Disciplines: </strong>
+                        {% for cadeira in skill.cadeiras.all %}
+                        <a href="{% url 'portofolio:discipline' cadeira.id %}">{{ cadeira.nome }}</a>{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </p>
+                {% endif %}
+                {% if skill.projetos.all %}
+                    <p><strong>Projects: </strong>{{skill.projetos.all|join:", " }}</p>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<h2 class="title">Social Skills</h2>
+<div class="wrapper">
+    {% for skill in skills_social %}
+        <div class="card">
+            <div class="card-header">
+                <h3>{{skill.nome}}</h3>
+            </div>
+            <div class="card-body">
+                <p>{{skill.descricao}}</p>
+                {% if skill.cadeiras.all %}
+                    <p> <strong>Disciplines: </strong>
+                        {% for cadeira in skill.cadeiras.all %}
+                        <a href="{% url 'portofolio:discipline' cadeira.id %}">{{ cadeira.nome }}</a>{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </p>
+                {% endif %}
+                {% if skill.projetos.all %}
+                    <p><strong>Projects: </strong>{{skill.projetos.all|join:", " }}</p>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{%endblock%}

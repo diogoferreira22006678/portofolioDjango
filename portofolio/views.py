@@ -527,11 +527,60 @@ def studies(request):
     # Get all cursos
     curso = Curso.objects.all()
 
-    # Order Cadeiras by AnoEscolar and then by Semestre
-    cadeiras = Cadeira.objects.all().order_by('anoEscolar', 'semestre')
+    # Get all cadeiras
+    cadeiras = Cadeira.objects.all()
+
+    # Separate cadeiras by AnoEscolar and Semestre
+
+    cadeiras_1_1 = []
+    cadeiras_1_2 = []
+    cadeiras_2_1 = []
+    cadeiras_2_2 = []
+
+    for cadeira in cadeiras:
+        if cadeira.anoEscolar == 1 and cadeira.semestre == 1:
+            cadeiras_1_1.append(cadeira)
+        elif cadeira.anoEscolar == 1 and cadeira.semestre == 2:
+            cadeiras_1_2.append(cadeira)
+        elif cadeira.anoEscolar == 2 and cadeira.semestre == 1:
+            cadeiras_2_1.append(cadeira)
+        elif cadeira.anoEscolar == 2 and cadeira.semestre == 2:
+            cadeiras_2_2.append(cadeira)
 
         
-    return render(request, 'front/studies.html', {'pessoa': pessoa, 'escolas': escolas, 'universidades': universidades, 'cursos': curso, 'cadeiras': cadeiras})
+    return render(request, 'front/studies.html', {'pessoa': pessoa, 'escolas': escolas, 'universidades': universidades, 
+                                                  'cursos': curso, 'cadeiras_1_1': cadeiras_1_1, 'cadeiras_1_2': cadeiras_1_2, 
+                                                  'cadeiras_2_1': cadeiras_2_1, 'cadeiras_2_2': cadeiras_2_2})
+
+
+def discipline(request, id):
+
+    cadeira = Cadeira.objects.get(pk=id)
+
+    return render(request, 'front/discipline.html', {'cadeira': cadeira})
+
+def skills(request):
+
+    skills = Aptidao.objects.all()
+
+    skills_technical = []
+    skills_social = []
+    skills_linguistic = []
+    skills_organizationals = []
+
+    for skill in skills:
+        if skill.tipo.id == 1:
+            skills_technical.append(skill)
+        elif skill.tipo.id == 2:
+            skills_social.append(skill)
+        elif skill.tipo.id == 4:
+            skills_linguistic.append(skill)
+        elif skill.tipo.id == 3:
+            skills_organizationals.append(skill)
+
+
+    return render(request, 'front/skills.html', {'skills_technical': skills_technical, 'skills_social': skills_social, 
+                                                 'skills_linguistic': skills_linguistic, 'skills_organizationals': skills_organizationals})
 
 
 

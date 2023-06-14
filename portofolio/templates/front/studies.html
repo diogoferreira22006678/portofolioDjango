@@ -68,4 +68,66 @@
     {% endfor %}
 </div>
 
+<div class="wrapper">
+    <div class="container-flex">
+        <strong>Cadeiras de 1°Ano</strong>
+        <small class="semestre">1°Semestre</small>
+        <ol class="alternating-colors">
+            {% for cadeira in cadeiras_1_1 %}
+            <a href="{% url 'portofolio:discipline' cadeira.id %}">
+                <li>
+                    <strong>{{ cadeira.nome }}</strong>
+                    <!-- show professores separated by comma -->
+                    <p>{{ cadeira.professores.all|join:", " }}</p>
+                </li>
+            </a>
+            {% endfor %}
+        </ol>
+    </div>
+    <div class="container-flex">
+        <strong>Cadeiras de 1°Ano</strong>
+        <small class="semestre">2°Semestre</small>
+        <ol class="alternating-colors">
+            {% for cadeira in cadeiras_1_2 %}
+            <a href="{% url 'portofolio:discipline' cadeira.id %}">
+                <li>
+                    <strong>{{ cadeira.nome }}</strong>
+                    <!-- show professores separated by comma -->
+                    <p>{{ cadeira.professores.all|join:", " }}</p>
+                </li>
+            </a>
+            {% endfor %}
+    </div>
+    <div class="container-flex">
+        <strong>Cadeiras de 2°Ano</strong>
+        <small class="semestre">1°Semestre</small>
+        <ol class="alternating-colors">
+            {% for cadeira in cadeiras_2_1 %}
+            <a href="{% url 'portofolio:discipline' cadeira.id %}">
+                <li>
+                    <strong>{{ cadeira.nome }}</strong>
+                    <!-- show professores separated by comma -->
+                    <p>{{ cadeira.professores.all|join:", " }}</p>
+                </li>
+            </a>
+            {% endfor %}
+        </ol>
+    </div>
+
+    <div class="container-flex">
+        <strong>Cadeiras de 2°Ano</strong>
+        <small class="semestre">2°Semestre</small>
+        <ol class="alternating-colors">
+            {% for cadeira in cadeiras_2_2 %}
+            <a href="{% url 'portofolio:discipline' cadeira.id %}">
+                <li>
+                    <strong>{{ cadeira.nome }}</strong>
+                    <!-- show professores separated by comma -->
+                    <p>{{ cadeira.professores.all|join:", " }}</p>
+                </li>
+            </a>
+            {% endfor %}
+        </ol>
+    </div>
+</div>
 {%endblock%}

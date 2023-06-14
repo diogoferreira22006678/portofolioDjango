@@ -83,5 +83,7 @@ urlpatterns = [
     path('download/', views.download_file, name='download_file'),
     path('', views.index, name='index'),
     path('studies/', views.studies, name='studies'),
+    path('discipline/<int:id>', views.discipline, name='discipline'),
+    path('skills/', views.skills, name='skills'),
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
