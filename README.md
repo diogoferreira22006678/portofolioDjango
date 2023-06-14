@@ -21,7 +21,7 @@ I'm a dedicated and motivated developer who enjoys solving complex problems and 
 I'm always excited to connect with fellow developers and collaborate on interesting projects. If you'd like to get in touch with me or discuss potential collaborations, feel free to reach out via:
 
 - Email: diomferreira@gmail.com
-- LinkedIn: [Diogo Ferreira]([(https://www.linkedin.com/in/diogo-ferreira-6731a1209/])
+- LinkedIn: [Diogo Ferreira]([https://www.linkedin.com/in/diogo-ferreira-6731a1209/])
 
 ## Let's Build Something Amazing Together! 🤝
 
