@@ -58,6 +58,15 @@ class Professor (models.Model):
     def __str__(self):
         return self.nome + ' ' + self.sobrenome
     
+class Interesse (models.Model):
+    nome = models.CharField(max_length=255)
+    descricao = models.TextField()
+    foto = models.ImageField(upload_to='interesses/', null=True, blank=True)
+    link = models.URLField(max_length=200, null=True, blank=True)
+
+    def __str__(self):
+        return self.nome
+    
 class Cadeira (models.Model):
     nome = models.CharField(max_length=255)
     ano = models.IntegerField()
@@ -82,17 +91,17 @@ class TipoProjeto(models.Model):
 
 class Projeto(models.Model):
     nome = models.CharField(max_length=255)
-    resumo = models.TextField()
     descricao = models.TextField()
     github = models.URLField(max_length=200, null=True, blank=True)
     pessoas = models.ManyToManyField(Pessoa)
-    linguagens = models.ManyToManyField('Linguagem')
+    orientadores = models.ManyToManyField('Professor', null=True, blank=True)
     tipo = models.ForeignKey('TipoProjeto', on_delete=models.CASCADE)
     tecnologias = models.ManyToManyField('Tecnologia')
     cadeira = models.ForeignKey('Cadeira', on_delete=models.CASCADE, null=True, blank=True)
     pokemon = models.ImageField(upload_to='pokemons/', null=True, blank=True)
-    imagem = models.ImageField(upload_to='projetos/', null=True, blank=True)
     ano = models.IntegerField()
+    link_relatorio = models.URLField(max_length=200, null=True, blank=True)
+    link_video = models.URLField(max_length=200, null=True, blank=True)
 
     def __str__(self):
         return self.nome
@@ -141,12 +150,15 @@ class TipoTecnologia(models.Model):
 
 class Tecnologia(models.Model):
     nome = models.CharField(max_length=255)
+    acronimo = models.CharField(max_length=255, null=True, blank=True)
     ano_criacao = models.IntegerField()
-    pessoa = models.ForeignKey(Pessoa, on_delete=models.CASCADE)
+    criador = models.CharField(max_length=255, null=True, blank=True)
     resumo = models.TextField()
     link_oficial = models.URLField()
     descricao = models.TextField()
     tipo = models.ForeignKey('TipoTecnologia', on_delete=models.CASCADE)
+    linguagens = models.ManyToManyField('Linguagem', null=True, blank=True)
+    logotipo = models.ImageField(upload_to='logos/tecnologias/', null=True, blank=True)
 
     def __str__(self):
         return self.nome

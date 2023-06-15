@@ -16,6 +16,7 @@
                 <a href="{{ pessoa.linkedin }}" target="_blank"><i class="fab fa-linkedin"></i></a>
                 <a href="{{ pessoa.github }}" target="_blank"><i class="fab fa-github"></i></a>
                 <a href="{{ pessoa.instagram }}" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
         </div>
     </section>
 
@@ -34,7 +35,9 @@
                 <div class="right-col">
                     <div id="typed2" class="text">I'm {{ pessoa.nome }} and I'm a <span class="typing-2"></span></div>
                     <p>{{ pessoa.resumo_sobre }}</p>
+                    <a href="{% url 'portofolio:interests' %}">Read More</a>
                     <a href="{% url 'portofolio:download_file' %}">Download CV</a>
+                    
                 </div>
             </div>
           </div>
@@ -47,7 +50,7 @@
           <h2 class="title">My Studies</h2>
           <div class="studies-content">
             <div class="left-col">
-              <p>{{ pessoa.resumo_estudos }}</p>
+              <p>{{ pessoa.resumo_estudos }} </p>
               <a href="{% url 'portofolio:studies' %}">Read More</a>
             </div>
             <div class="right-col" style="display: flex;justify-content: right">
@@ -80,56 +83,18 @@
     <!-- projects section start -->
     <section class="projects" id="projects">
           <div class="container">
-            <h2 class="title">My Projects</h2>
-            <div class="carousel owl-carousel" style="width: 80%; margin-left:15%;">
+            <h2 class="title">My Projects {{ projetos.length }}</h2>
+            <div class="carousel owl-carousel" style="width: 80%; margin-left:15%;">              
+              {% for projeto in projetos %}
                 <div class="card">
                     <div class="box">
-                        <img src="/images/charmander.png" alt="">
-                        <div class="text">Project 1</div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <a href="#" class="read-more-btn">Read More</a>
-                      </div>
+                        <img src="{{ projeto.pokemon.url }}" alt="">
+                        <div class="text">{{ projeto.nome }}</div>
+                        <p>{{ projeto.descricao|truncatechars:150 }}</p>
+                        <a href="{% url 'portofolio:project' projeto.id %}" class="read-more-btn">Read More</a>
+                    </div>
                 </div>
-                <div class="card">
-                    <div class="box">
-                        <img src="images/cyndaquil.png" alt="">
-                        <div class="text">Project 2</div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <a href="#" class="read-more-btn">Read More</a>
-                      </div>
-                </div>
-                <div class="card">
-                    <div class="box">
-                        <img src="images/torchic.png" alt="">
-                        <div class="text">Project 3</div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <a href="#" class="read-more-btn">Read More</a>
-                      </div>
-                </div>
-                <div class="card">
-                    <div class="box">
-                        <img src="images/chimchar.png" alt="">
-                        <div class="text">Project 4</div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <a href="#" class="read-more-btn">Read More</a>
-                      </div>
-                  </div>
-                <div class="card">
-                    <div class="box">
-                        <img src="images/tepig.png" alt="">
-                        <div class="text">Project 5</div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <a href="#" class="read-more-btn">Read More</a>
-                      </div>
-                </div>
-                <div class="card">
-                    <div class="box">
-                        <img src="images/fennekin.png" alt="">
-                        <div class="text">Project 6</div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <a href="#" class="read-more-btn">Read More</a>
-                      </div>
-                </div>
+              {% endfor %}
             </div>
         </div>
 
@@ -137,57 +102,20 @@
 
         <div class="max-width">
           <div class="container">
-            <h2 class="title">Technologies that I like</h2>
+            <h2 class="title">TFCs</h2>
             <div class="container-flex">
             <div class="grid">
-              <div class="card">
-                <img src="/images/charmeleon.png" alt="" width="300px" height="300px">
-                <div class="overlay">
-                  <div class="text">Project 1</div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                  <a href="#" class="read-more-btn">Learn More</a>
+              {% for tfc in tfcs %}
+                <div class="card">
+                  <img src="{{ tfc.pokemon.url }}" alt="" width="300px" height="300px">
+                  <div class="overlay">
+                    <div class="text">{{ tfc.nome }}</div>
+                    <p>{{ tfc.descricao|truncatechars:150 }}</p>
+                    <a href="{% url 'portofolio:project' tfc.id %}" class="read-more-btn">Learn More</a>
+                  </div>
                 </div>
-              </div>
-              <div class="card">
-                <img src="images/quilava.png" alt="" width="300px" height="300px">
-                <div class="overlay">
-                  <div class="text">Project 2</div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                  <a href="#" class="read-more-btn">Learn More</a>
-                </div>
-              </div>
-              <div class="card">
-                <img src="images/combusken.png" alt="" width="300px" height="300px">
-                <div class="overlay">
-                  <div class="text">Project 3</div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                  <a href="#" class="read-more-btn">Learn More</a>
-                </div>
-              </div>
-              <div class="card">
-                <img src="/images/monferno.png" alt="" width="300px" height="300px">
-                <div class="overlay">
-                  <div class="text">Project 4</div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                  <a href="#" class="read-more-btn">Learn More</a>
-                </div>
-              </div>
-              <div class="card">
-                <img src="images/tepig.png" alt="" width="300px" height="300px">
-                <div class="overlay">
-                  <div class="text">Project 5</div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                  <a href="#" class="read-more-btn">Learn More</a>
-                </div>
-              </div>
-              <div class="card">
-                <img src="images/braixen.png" alt="" width="300px" height="300px">
-                <div class="overlay">
-                  <div class="text">Project 6</div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                  <a href="#" class="read-more-btn">Learn More</a>
-                </div>
-              </div>
+              {% endfor %}
+             
             </div>
           </div>
           </div>
@@ -198,35 +126,16 @@
         <!-- Projects That I Take Part of outside of school -->
         <div class="max-width">
           <div class="container">
-            <h2 class="title">Technologies that I like</h2>
-            <div class="container-flex">
-            <div class="grid">
-              <div class="card">
-                <img src="/images/charizard.png" alt="" width="300px" height="300px">
-                <div class="overlay">
-                  <div class="text">Project 1</div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                  <a href="#" class="read-more-btn">Learn More</a>
+            <h2 class="title">Web Development</h2>
+            <div class="about-content" id="abouNav">
+                <div class="left-col">
+                    <img src="{% static 'portofolio/media/front/charizard.png' %}" alt="" width="300px" height="300px">
                 </div>
-              </div>
-              <div class="card">
-                <img src="images/typhlosion.png" alt="" width="300px" height="300px">
-                <div class="overlay">
-                  <div class="text">Project 2</div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                  <a href="#" class="read-more-btn">Learn More</a>
+                <div class="right-col">
+                    <p>The web page provides comprehensive information about various technologies used in web development. It covers a range of back-end technologies, including Laravel, ASP.NET, Spring MVC, Express, and Django, highlighting their creation year, creators, official websites, languages used, and brief descriptions. Similarly, it explores popular front-end technologies such as Angular, React, Vue, and Svelte, providing key details about each one. Additionally, it mentions other platforms like WordPress, OutSystems, Weebly, and Wix. The page also features a section dedicated to showcasing laboratory links for web programming topics, along with a curated list of 10 news articles from Medium.com, complete with titles, short descriptions, images, and links. Lastly, it discusses favorite techniques and effects, preferred and disliked websites, modern web programming trends, and obsolete aspects. Overall, the page offers a comprehensive overview of web development technologies, making it a valuable resource for developers and enthusiasts alike.</p>
+                    <a href="{% url 'portofolio:web' %}">Read More</a>
                 </div>
-              </div>
-              <div class="card">
-                <img src="images/blaziken.png" alt="" width="300px" height="300px">
-                <div class="overlay">
-                  <div class="text">Project 3</div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                  <a href="#" class="read-more-btn">Learn More</a>
-                </div>
-              </div>
             </div>
-          </div>
           </div>
         </div>
     </section>

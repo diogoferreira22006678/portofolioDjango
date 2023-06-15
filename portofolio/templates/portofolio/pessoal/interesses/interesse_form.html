@@ -1,0 +1,38 @@
+{%extends 'portofolio/base.html' %}
+{%load crispy_forms_tags%}
+{%block content%}
+<div class="container">
+    <div class="col-md-10 offset-md-1 mt-5">
+        <div class="limiter-form jumbotron">
+            <div class="container-flex">
+                <a href="{%url 'portofolio:interesses_list'%}" class="btn btn-primary btn-sm">
+                    <i class="fas fa-arrow-left"></i>
+                        Voltar
+                </a>
+            </div>
+            <h1 class="display-4">Registar Pessoas</h1>
+            <p class="lead">Aqui irás conseguir adicionar pessoas no Backend.</p>
+            <hr class="my-4">
+            <form action="" method="post" autocomplete="off">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-4">
+                        {{form.nome|as_crispy_field}}
+                    </div>
+                    <div class="col-md-4">
+                        {{ form.link|as_crispy_field }}
+                    </div>
+                    <div class="col-md-4">
+                        {{form.foto|as_crispy_field}}
+                    </div>
+                </div>
+                {{form.descricao|as_crispy_field}}
+                <button class="register-custom btn btn-sucess btn-lg" type="submit">
+                    <i class="fas fa-user-plus"></i>
+                        Registar
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{%endblock%}

@@ -1,0 +1,31 @@
+{%extends 'front/base.html'%}
+{%load static%}
+
+{%block head%}
+<link rel="stylesheet" href="{%static 'portofolio/css/studies.css'%}">
+{%endblock%}
+{%block content%}
+<h2 class="title"> {{ projeto.nome }} </h2>
+<div class="discipline-wrapper">
+    <div class="card-discipline">
+        <div class="card-discipline-header">
+            <h1>Year: {{ projeto.ano }}</h1>
+        </div>
+        <div class="card-discipline-body">
+            <p class="discipline-detail"><strong>Type : </strong>{{ projeto.tipo }}</p>
+            <p class="discipline-detail"><strong>Advisores:</strong> </p>
+            {% for orientador in projeto.orientadores.all %}
+                    <p> {{ orientador.nome }} {{ orientador.sobrenome }}  - <a href="{{ orientador.linkedin }}"><i class="fab fa-linkedin professor-social"></i></a> 
+                        <a href="{{ orientador.link_lusofona }}"><i class="fas fa-globe professor-social"></i></a></p>
+            {% endfor %}
+            <p class="discipline-detail"><strong>Autores:</strong> </p>
+            {% for autor in projeto.pessoas.all %}
+                    <p> {{ autor.nome }} {{ autor.sobrenome }}  - <a href="{{ autor.linkedin }}"><i class="fab fa-linkedin professor-social"></i></a> 
+                        <a href="{{ autor.link_lusofona }}"><i class="fas fa-globe professor-social"></i></a></p>
+            {% endfor %}
+            <p class="discipline-detail"><strong>Report:</strong><a href="{{ projeto.link_relatorio }}"> Click me </a></p>
+            <p class="discipline-detail"><strong>Description:</strong> {{ projeto.descricao }}</p>
+        </div>
+    </div>
+</div>
+{%endblock%}

@@ -1,0 +1,21 @@
+{%extends 'front/base.html'%}
+{%load static%}
+
+{%block head%}
+<link rel="stylesheet" href="{%static 'portofolio/css/studies.css'%}">
+{%endblock%}
+{%block content%}
+<h2 class="title">Interests</h2>
+
+<div class="wrapper">
+{% for interesse in interesses %}
+    <div class="container-flex">
+            <img src="{{ interesse.foto.url }}" alt="{{ interesse.nome }}">
+            <li>
+                <a href="{{ interesse.link }}" class="cadeira-anchor"><strong>{{ interesse.nome }}</strong></a>
+                <p>{{interesse.descricao}}</p>
+            </li>
+    </div>
+{% endfor %}
+</div>
+{%endblock%}

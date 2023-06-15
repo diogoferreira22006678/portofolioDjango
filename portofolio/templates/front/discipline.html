@@ -5,5 +5,24 @@
 <link rel="stylesheet" href="{%static 'portofolio/css/studies.css'%}">
 {%endblock%}
 {%block content%}
-
+<h2 class="title"> {{ cadeira.nome }} </h2>
+<div class="discipline-wrapper">
+    <div class="card-discipline">
+        <div class="card-discipline-header">
+            <h1>Year: {{ cadeira.ano }}</h1>
+        </div>
+        <div class="card-discipline-body">
+            <p class="discipline-detail"><strong>ECTS:</strong> {{ cadeira.ects }}</p>
+            <p class="discipline-detail"><strong>Course: </strong>{{ cadeira.curso }}</p>
+            <p class="discipline-detail"><strong>Teachers:</strong> </p>
+            {% for professor in cadeira.professores.all %}
+                    <p> {{ professor.nome }} {{ professor.sobrenome }}  - <a href="{{ professor.linkedin }}"><i class="fab fa-linkedin professor-social"></i></a> 
+                        <a href="{{ professor.link_lusofona }}"><i class="fas fa-globe professor-social"></i></a></p>
+                    {% endfor %}
+            <p class="discipline-detail"><strong>Semester: </strong>{{ cadeira.semestre }}º</p>
+            <p class="discipline-detail"><strong>School Year:</strong> {{ cadeira.anoEscolar }}º</p>
+            <p class="discipline-detail"><strong>Description:</strong> {{ cadeira.descricao }}</p>
+        </div>
+    </div>
+</div>
 {%endblock%}

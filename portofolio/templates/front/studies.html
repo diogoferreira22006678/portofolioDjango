@@ -74,13 +74,14 @@
         <small class="semestre">1°Semestre</small>
         <ol class="alternating-colors">
             {% for cadeira in cadeiras_1_1 %}
-            <a href="{% url 'portofolio:discipline' cadeira.id %}">
-                <li>
-                    <strong>{{ cadeira.nome }}</strong>
-                    <!-- show professores separated by comma -->
-                    <p>{{ cadeira.professores.all|join:", " }}</p>
-                </li>
-            </a>
+            <li>
+                <a href="{% url 'portofolio:discipline' cadeira.id %}" class="cadeira-anchor"><strong>{{ cadeira.nome }}</strong></a>
+                <p>
+                    {% for professor in cadeira.professores.all %}
+                    <p> {{ professor.nome }} {{ professor.sobrenome }}  - <a href="{{ professor.linkedin }}"><i class="fab fa-linkedin professor-social"></i></a> 
+                        <a href="{{ professor.link_lusofona }}"><i class="fas fa-globe professor-social"></i></a></p>
+                    {% endfor %}
+            </li>
             {% endfor %}
         </ol>
     </div>
@@ -89,27 +90,30 @@
         <small class="semestre">2°Semestre</small>
         <ol class="alternating-colors">
             {% for cadeira in cadeiras_1_2 %}
-            <a href="{% url 'portofolio:discipline' cadeira.id %}">
-                <li>
-                    <strong>{{ cadeira.nome }}</strong>
-                    <!-- show professores separated by comma -->
-                    <p>{{ cadeira.professores.all|join:", " }}</p>
-                </li>
-            </a>
+            <li>
+                <a href="{% url 'portofolio:discipline' cadeira.id %}" class="cadeira-anchor"><strong>{{ cadeira.nome }}</strong></a>
+                <p>
+                    {% for professor in cadeira.professores.all %}
+                    <p> {{ professor.nome }} {{ professor.sobrenome }}  - <a href="{{ professor.linkedin }}"><i class="fab fa-linkedin professor-social"></i></a> 
+                        <a href="{{ professor.link_lusofona }}"><i class="fas fa-globe professor-social"></i></a></p>
+                    {% endfor %}
+            </li>
             {% endfor %}
+        </ol>
     </div>
     <div class="container-flex">
         <strong>Cadeiras de 2°Ano</strong>
         <small class="semestre">1°Semestre</small>
         <ol class="alternating-colors">
             {% for cadeira in cadeiras_2_1 %}
-            <a href="{% url 'portofolio:discipline' cadeira.id %}">
                 <li>
-                    <strong>{{ cadeira.nome }}</strong>
-                    <!-- show professores separated by comma -->
-                    <p>{{ cadeira.professores.all|join:", " }}</p>
+                    <a href="{% url 'portofolio:discipline' cadeira.id %}" class="cadeira-anchor"><strong>{{ cadeira.nome }}</strong></a>
+                    <p>
+                        {% for professor in cadeira.professores.all %}
+                        <p> {{ professor.nome }} {{ professor.sobrenome }}  - <a href="{{ professor.linkedin }}"><i class="fab fa-linkedin professor-social"></i></a> 
+                            <a href="{{ professor.link_lusofona }}"><i class="fas fa-globe professor-social"></i></a></p>
+                        {% endfor %}
                 </li>
-            </a>
             {% endfor %}
         </ol>
     </div>
@@ -119,13 +123,13 @@
         <small class="semestre">2°Semestre</small>
         <ol class="alternating-colors">
             {% for cadeira in cadeiras_2_2 %}
-            <a href="{% url 'portofolio:discipline' cadeira.id %}">
                 <li>
-                    <strong>{{ cadeira.nome }}</strong>
-                    <!-- show professores separated by comma -->
-                    <p>{{ cadeira.professores.all|join:", " }}</p>
+                    <a href="{% url 'portofolio:discipline' cadeira.id %}" class="cadeira-anchor"><strong>{{ cadeira.nome }}</strong></a>
+                    <p>
+                        {% for professor in cadeira.professores.all %}
+                        <p> {{ professor.nome }} {{ professor.sobrenome }}  - <a href="{{ professor.linkedin }}"><i class="fab fa-linkedin professor-social"></i></a> <a href="{{ professor.link_lusofona }}"><i class="fas fa-globe professor-social"></i></a></p>
+                        {% endfor %}
                 </li>
-            </a>
             {% endfor %}
         </ol>
     </div>

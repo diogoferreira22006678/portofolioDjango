@@ -13,6 +13,7 @@ from .models import Tecnologia
 from .models import TipoTecnologia
 from .models import TipoAptidao
 from .models import TipoProjeto
+from .models import Interesse
 
 class PessoaForm(forms.ModelForm):
 
@@ -77,6 +78,12 @@ class CursoForm(forms.ModelForm):
         super(CursoForm, self).__init__(*args, **kwargs)
         self.fields['professor'].empty_label = "Escolhe o Professor"
         self.fields['universidade'].empty_label = "Escolhe a Universidade"
+
+class InteresseForm(forms.ModelForm):
+
+    class Meta:
+        model = Interesse
+        fields ='__all__'
 
 class CadeiraForm(forms.ModelForm):
             

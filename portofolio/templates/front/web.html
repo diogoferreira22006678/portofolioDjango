@@ -1,0 +1,59 @@
+{%extends 'front/base.html'%}
+{%load static%}
+
+{%block head%}
+<link rel="stylesheet" href="{%static 'portofolio/css/studies.css'%}">
+{%endblock%}
+{%block content%}
+<h2 class="title">Front-End Technologies</h2>
+
+<div class="wrapper">
+{% for tech in front %}
+    <div class="container-flex">
+            <img src="{{ tech.logotipo.url }}" alt="{{ tech.nome }}">
+            <li>
+                <a href="{{ tech.link_oficial }}" class="cadeira-anchor"><strong>{{ tech.nome }} - {{ tech.ano_criacao }}</strong></a>
+                <div><small>Creators: {{ tech.criador }}</small></div>
+                <p>{{tech.descricao}}</p>
+                <p><strong>Linguagens</strong>: {% for linguagem in tech.linguagens.all %}{{ linguagem.nome }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+
+            </li>
+    </div>
+{% endfor %}
+</div>
+
+<h2 class="title">Back-End Technologies</h2>
+
+<div class="wrapper">
+{% for tech in back %}
+    <div class="container-flex">
+            <img src="{{ tech.logotipo.url }}" alt="{{ tech.nome }}">
+            <li>
+                <a href="{{ tech.link_oficial }}" class="cadeira-anchor"><strong>{{ tech.nome }} - {{ tech.ano_criacao }}</strong></a>
+                <div><small>Creators: {{ tech.criador }}</small></div>
+                <p>{{tech.descricao}}</p>
+                <p><strong>Linguagens</strong>: {% for linguagem in tech.linguagens.all %}{{ linguagem.nome }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+
+            </li>
+    </div>
+{% endfor %}
+</div>
+
+
+<h2 class="title">Other Technologies</h2>
+
+<div class="wrapper">
+{% for tech in cms %}
+    <div class="container-flex">
+            <img src="{{ tech.logotipo.url }}" alt="{{ tech.nome }}">
+            <li>
+                <a href="{{ tech.link_oficial }}" class="cadeira-anchor"><strong>{{ tech.nome }} - {{ tech.ano_criacao }}</strong></a>
+                <div><small>Creators: {{ tech.criador }}</small></div>
+                <p>{{tech.descricao}}</p>
+                <p><strong>Linguagens</strong>: {% for linguagem in tech.linguagens.all %}{{ linguagem.nome }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+
+            </li>
+    </div>
+{% endfor %}
+</div>
+{%endblock%}

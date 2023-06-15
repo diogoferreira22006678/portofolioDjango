@@ -20,6 +20,7 @@ from .forms import TecnologiaForm
 from .forms import TipoTecnologiaForm
 from .forms import TipoAptidaoForm
 from .forms import TipoProjetoForm
+from .forms import InteresseForm
 
 from .models import Pessoa
 from .models import Professor
@@ -35,6 +36,7 @@ from .models import Tecnologia
 from .models import TipoTecnologia
 from .models import TipoAptidao
 from .models import TipoProjeto
+from .models import Interesse
 
 # Create your views here.
 @login_required
@@ -482,11 +484,75 @@ def tipo_projetos_list(request):
 
     return render(request, 'portofolio/tipos/tipo_projetos/tipo_projeto_list.html', context)
 
+
+@login_required
+def interesses_form(request, id=0):
+    if request.method == "GET":
+        if id == 0:
+            form = InteresseForm()
+        else:
+            interesse = Interesse.objects.get(pk=id)
+            form = InteresseForm(instance=interesse)
+        return render(request, 'portofolio/pessoal/interesses/interesse_form.html', {'form': form})
+    else:
+        if id == 0:
+            form = InteresseForm(request.POST)
+        else:
+            interesse = Interesse.objects.get(pk=id)
+            form = InteresseForm(request.POST, instance=interesse)
+        if form.is_valid():
+            form.save()
+        return redirect('/backend/interesses/list/')
+
+@login_required
+def interesses_delete(request, id):
+    interesse = Interesse.objects.get(pk=id)
+    interesse.delete()
+    return redirect('/backend/interesses/list/')
+
+@login_required
+def interesses_list(request):
+    
+        context = {'interesses_list': Interesse.objects.all()}
+    
+        return render(request, 'portofolio/pessoal/interesses/interesse_list.html', context)
+
+
 def index(request):
 
     pessoa = Pessoa.objects.get(nome='Diogo', sobrenome='Ferreira')
+    # Projetos that arent tipo TFC
+    projetos = Projeto.objects.exclude(tipo__nome='TFC')
+    tfcs = Projeto.objects.filter(tipo__nome='TFC')
 
-    return render(request, 'front/index.html', {'pessoa': pessoa})
+
+
+    return render(request, 'front/index.html', {'pessoa': pessoa, 'projetos': projetos, 'tfcs': tfcs})
+
+def project(request, id):
+
+    projeto = Projeto.objects.get(pk=id)
+
+    return render(request, 'front/project.html', {'projeto': projeto})
+
+def interests(request):
+
+    interesses = Interesse.objects.all()
+
+    return render(request, 'front/interests.html', {'interesses': interesses})
+
+def web (request):
+        
+        # get Laravel, ASP.NET , Spring MVC , Express and Django
+        front = Tecnologia.objects.filter(nome__in=['Laravel', 'ASP.NET', 'Spring MVC', 'Express', 'Django'])
+        # get React, Vue, Angular, Svelte 
+        back = Tecnologia.objects.filter(nome__in=['React', 'Vue', 'Angular', 'Svelte'])
+        # get Wordpress, OutSystems, Wix, Weebly
+        cms = Tecnologia.objects.filter(nome__in=['WordPress', 'OutSystems', 'Wix', 'Weebly'])
+
+    
+    
+        return render(request, 'front/web.html', {'front': front, 'back': back, 'cms': cms})
 
 def download_file(request):
     # Retrieve the file path or file object
@@ -556,6 +622,7 @@ def studies(request):
 def discipline(request, id):
 
     cadeira = Cadeira.objects.get(pk=id)
+    projeto = Projeto.objects.all()
 
     return render(request, 'front/discipline.html', {'cadeira': cadeira})
 

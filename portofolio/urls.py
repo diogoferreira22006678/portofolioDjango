@@ -59,6 +59,11 @@ urlpatterns = [
     path('backend/aptidoes/update/<int:id>', views.aptidoes_form, name='aptidao_update'), # get and post req. for update operation
     path('backend/aptidoes/delete/<int:id>', views.aptidoes_delete, name='aptidao_delete'), # get req. to delete operation
 
+    path('backend/interesses/', views.interesses_form, name='interesses_insert'), # get and post req. for insert operation
+    path('backend/interesses/list/', views.interesses_list, name='interesses_list'), # get req. to retrieve and display all records
+    path('backend/interesses/update/<int:id>', views.interesses_form, name='interesse_update'), # get and post req. for update operation
+    path('backend/interesses/delete/<int:id>', views.interesses_delete, name='interesse_delete'), # get req. to delete operation
+
     path('backend/tecnologias/', views.tecnologias_form, name='tecnologias_insert'), # get and post req. for insert operation
     path('backend/tecnologias/list/', views.tecnologias_list, name='tecnologias_list'), # get req. to retrieve and display all records
     path('backend/tecnologias/update/<int:id>', views.tecnologias_form, name='tecnologia_update'), # get and post req. for update operation
@@ -85,5 +90,8 @@ urlpatterns = [
     path('studies/', views.studies, name='studies'),
     path('discipline/<int:id>', views.discipline, name='discipline'),
     path('skills/', views.skills, name='skills'),
+    path('interests/', views.interests, name='interests'),
+    path('project<int:id>', views.project, name='project'),
+    path('web/', views.web, name='web'),
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
