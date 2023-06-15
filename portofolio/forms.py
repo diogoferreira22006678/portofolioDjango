@@ -107,15 +107,12 @@ class ProjetoForm(forms.ModelForm):
     class Meta:
         model = Projeto
         fields ='__all__'
-        widgets = {
-            'inicio': forms.DateInput(attrs={'type': 'date'}),
-            'fim': forms.DateInput(attrs={'type': 'date'}),
-        }
 
+        
     # Select field tem de ser Escolhe a Pessoa
     def __init__(self, *args, **kwargs):
         super(ProjetoForm, self).__init__(*args, **kwargs)
-        self.fields['pessoa'].empty_label = "Escolhe a Pessoa"
+        self.fields['pessoas'].empty_label = "Escolhe a Pessoas"
         self.fields['tipo'].empty_label = "Escolhe o Tipo"
         self.fields['tecnologias'].empty_label = None
         self.fields['cadeira'].empty_label = "Escolhe a Cadeira"

@@ -9,6 +9,7 @@ app_name = 'portofolio'
 urlpatterns = [
 
     path('backend/', views.home, name='home'),
+    
     path('backend/pessoas/', views.pessoas_form, name='pessoas_insert'), # get and post req. for insert operation
     path('backend/pessoas/list/', views.pessoas_list, name='pessoas_list'), # get req. to retrieve and display all records
     path('backend/pessoas/update/<int:id>', views.pessoas_form, name='pessoa_update'), # get and post req. for update operation

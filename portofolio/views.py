@@ -251,7 +251,7 @@ def projetos_form(request, id=0):
         if id == 0:
             form = ProjetoForm()
         else:
-            projecto = ProjetoForm.objects.get(pk=id)
+            projecto = Projeto.objects.get(pk=id)
             form = ProjetoForm(instance=projecto)
         return render(request, 'portofolio/trabalhos/projetos/projeto_form.html', {'form': form})
     else:
