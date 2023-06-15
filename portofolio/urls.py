@@ -93,5 +93,6 @@ urlpatterns = [
     path('interests/', views.interests, name='interests'),
     path('project<int:id>', views.project, name='project'),
     path('web/', views.web, name='web'),
-    
+    path('page_details/', views.page_details, name='page_details'),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

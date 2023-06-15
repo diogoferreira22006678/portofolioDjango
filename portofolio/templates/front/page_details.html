@@ -1,0 +1,114 @@
+{% extends 'front/base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'portofolio/css/studies.css' %}">
+{% endblock %}
+
+{% block content %}
+<h2 class="title">Website Structure</h2>
+
+<div class="wrapper">
+    <div class="container-flex">
+        <strong>Website Structure:</strong>
+        <ol class="alternating-colors">
+            <li>Home</li>
+            <li>About
+                <ul>
+                    <li>Resume
+                        <ul>
+                            <li>Interests</li>
+                        </ul>
+                    </li>
+                    <li>Studies
+                        <ul>
+                            <li>Chronological Timeline</li>
+                            <li>University</li>
+                        </ul>
+                    <li>Skills
+                        <ul>
+                            <li>Technical Skills</li>
+                            <li>Linguistic Skills</li>
+                            <li>Organizational Skills</li>
+                            <li>Social Skills</li>
+                        </ul>
+                </ul>
+            </li>
+            <li>Projects
+                <ul>
+                    <li>Mine
+                        <ul>
+                            <li>Every Project Page by ID</li>
+                        </ul>
+                    </li>
+                    <li>TFCs
+                        <ul>
+                            <li>Every Project Page by ID</li>
+                        </ul>
+                    </li>
+                    <li>Web
+                        <ul>
+                            <li>FrontEnd Technologies</li>
+                            <li>BackEnd Technologies</li>
+                            <li>Other Technologies</li>
+                        </ul>
+                    <li>Page Details
+                        <ul>
+                            <li>Map of the Website</li>
+                            <li>List of Technologies Used</li>
+                            <li>Database in a ER Diagram</li>
+                            <li>List of Patterns Used</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>Contact</li>
+        </ol>
+    </div>
+
+    <div class="container-flex">
+        <strong>List of Technologies Used:</strong>
+        <ul>
+            <li>
+                <strong>HTML</strong> (Hypertext Markup Language): Language used to define the structure of the site.
+            </li>
+            <li>
+                <strong>CSS</strong> (Cascading Style Sheets): Language used to define the style of the site.
+            </li>
+            <li>
+                <strong>Python</strong>: Programming language used to develop the site.
+            </li>
+            <li>
+                <strong>Django</strong>: Web framework used to develop the site.
+            </li>
+            <li>
+                <strong>Heroku</strong>: Platform used to host the site.
+            </li>
+            <li>
+                <strong>JavaScript</strong>: Programming language used to add interactivity to the site.
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="wrapper no-background">
+    <div class="container-flex max-width">
+        <strong>Database Description:</strong>
+        <p>Entity-Relationship Diagram (ERD):</p>
+        <img src="{% static 'portofolio/media/erd.png' %}" alt="erd" class="img-erd">
+    </div>
+</div>
+
+<div class="wrapper">
+    <div class="container-flex">
+        <strong>List of Patterns Used:</strong>
+        <ul>
+            <li>Client-Server Architecture using HTTP</li>
+            <li>Model-View-Controller (MVC) Software Pattern</li>
+            <li>Asynchronous Communication Pattern (AJAX)</li>
+            <li>Progressive Web Application (PWA) Pattern</li>
+        </ul>
+    </div>
+</div>
+
+{% endblock %}

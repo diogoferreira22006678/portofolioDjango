@@ -181,6 +181,10 @@ class FormResponses (models.Model):
 
     def __str__(self):
         return self.nome + ' ' + self.email
-    
+
+
+class DadoColetado(models.Model):
+    valor = models.FloatField()
+    data_coleta = models.DateTimeField(auto_now_add=True)
 
     

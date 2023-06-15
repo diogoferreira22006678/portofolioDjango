@@ -569,5 +569,11 @@ footer span a:hover{
 
 }
 
-
+/* if screen size is less than 600px  */
+@media screen and (max-width: 600px){
+  .footer-right a{
+      /* make it dissapear */
+      display: none;
+  }
+}
 

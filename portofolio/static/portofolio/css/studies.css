@@ -427,3 +427,15 @@ strong { color: #292929; }
 .card-discipline-body p{
     font-size: 1.3rem;
 }
+
+.max-width{
+    max-width: 1200px !important;
+}
+
+/* if screen size is less than 600px  */
+@media screen and (max-width: 600px){
+    .footer-right a{
+        /* make it dissapear */
+        display: none;
+    }
+}

@@ -43,7 +43,7 @@
               <ul class="dropdown" id="project">
                 <li><a href="{% url 'portofolio:index' %}#projects" >Mine</a></li>
                 <li><a href="{% url 'portofolio:index' %}#ucProjectsNav">TFCs</a></li>
-                <li><a href="#techProjectsNav">Web</a></li>
+                <li><a href="{% url 'portofolio:index' %}#techProjectsNav">Web</a></li>
               </ul>
             </li>
             <li><a href="#contactNav">Contact</a></li>
@@ -62,10 +62,10 @@
 <footer>
     <div class="footer-content">
       <div class="footer-left">
-        <a href="#sitemap">Mapa do Site</a>
+        <a href="{% url 'portofolio:page_details' %}">Mapa do Site</a>
       </div>
       <div class="footer-center">
-        <span>Created By <a href="https://github.com/diogoferreira22006678">{{ pessoa.nome }} {{ pessoa.sobrenome }}</a> | </span>
+        <span>Created By <a href="https://github.com/diogoferreira22006678">{{ pessoa.nome }} {{ pessoa.sobrenome }}</a> | Odivelas</span>
         <span class="far fa-copyright"></span>
         <span>{% now "Y" %} All rights reserved.</span>
         <div class="socials">

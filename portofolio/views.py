@@ -5,6 +5,8 @@ import os
 from datetime import datetime
 from django.http import FileResponse
 from django.conf import settings
+import requests
+from bs4 import BeautifulSoup
 
 from .forms import PessoaForm
 from .forms import ProfessorForm
@@ -37,6 +39,7 @@ from .models import TipoTecnologia
 from .models import TipoAptidao
 from .models import TipoProjeto
 from .models import Interesse
+from .models import DadoColetado
 
 # Create your views here.
 @login_required
@@ -553,6 +556,10 @@ def web (request):
     
     
         return render(request, 'front/web.html', {'front': front, 'back': back, 'cms': cms})
+
+def page_details(request):
+
+    return render(request, 'front/page_details.html')
 
 def download_file(request):
     # Retrieve the file path or file object
